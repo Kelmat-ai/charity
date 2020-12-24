@@ -5,6 +5,7 @@ import Welcome from './app/screens/Welcome';
 import RegForm from './app/screens/RegForm';
 import Login from './app/screens/Login';
 import SettingsScreen from './app/screens/Settings/Settings';
+import Header from './app/components/Header';
 
 export default function App() {
 

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import colors from '../../config/colors.js';
 import React, { useState } from "react";
 import SettingsRow from '../../components/SettingsRow.js';
+import Header from '../../components/Header.js';
 import {
   StyleSheet,
   Text,
@@ -39,6 +40,7 @@ const RowOptions = [
 
 return(
   <ScrollView style={styles.container}>
+        <Header title="Settings"/>
         {RowOptions.map((item, index) => {
         return (
           <SettingsRow key={index} onPress={item.onPress} title={item.title} />
