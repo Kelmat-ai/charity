@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import colors from '../config/colors.js';
+import colors from '../../../config/colors.js';
 
 export default function RegForm() {
 
   return (
 <View style={styles.regform}>
-    <Text style={styles.header}>Create your account</Text>
+    <Text style={styles.header}>Change your account details</Text>
   
 <Text style={styles.inputTitle}>Name</Text>
 <TextInput
