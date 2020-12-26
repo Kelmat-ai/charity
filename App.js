@@ -7,12 +7,13 @@ import Login from './app/screens/Login';
 import SettingsScreen from './app/screens/Settings/Settings';
 import Header from './app/components/Header';
 import Notifications from './app/screens/Settings/SettingsScreens/Notifications';
+import ContactUs from './app/screens/Settings/SettingsScreens/ContactUs';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-    <Notifications />
+    <ContactUs />
     </View>
   );
 }
@@ -20,7 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   },
 });

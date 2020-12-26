@@ -25,16 +25,16 @@ const RowOptions = [
     title: "Notifications",
   },
   {
-    title: "Forgot password",
-  },
-  {
-    title: "Support us",
-  },
-  {
     title: "Rate us",
   },
   {
+    title: "Contact us",
+  },
+  {
     title: "Privacy",
+  },
+  {
+    title: "Terms of use",
   },
 ];
 

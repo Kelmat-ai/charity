@@ -14,20 +14,16 @@ const Header = ({ title }) => {
 const styles = StyleSheet.create({
     container: {
       alignSelf: 'stretch',
-      alignItems: 'flex-start',
-      fontSize: 35,
+      textAlign: 'center',
+      fontSize: 24,
       fontWeight: "bold",
       marginTop: Constants.statusBarHeight,
       flex: 1,
       width: '100%',
       backgroundColor: colors.primary,
       color: colors.secondary,
-      alignItems: 'flex-start',
-      justifyContent: 'center',
-      paddingLeft: 30,
-      paddingRight: 60,
+      paddingBottom: 25,
       flexDirection: "row",
-      justifyContent: "space-between",
       paddingVertical: 14,
       paddingHorizontal: 16,
     }
