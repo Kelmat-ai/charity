@@ -25,7 +25,7 @@ const RowOptions = [
     title: "Notifications",
   },
   {
-    title: "Rate us",
+    title: "Rate us!",
   },
   {
     title: "Contact us",

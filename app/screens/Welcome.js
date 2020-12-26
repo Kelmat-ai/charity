@@ -1,61 +1,31 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Image, Button, Alert, TouchableOpacity, Text } from 'react-native';
-
+import { ImageBackground, StyleSheet, View, Image, Alert, TouchableOpacity, Text, ScrollView } from 'react-native';
+import Button from '../components/Button.js';
 import colors from '../config/colors.js';
 
-function Welcome(props) {
+function Welcome( {props} ) {
     return (
-<ImageBackground 
-        style={styles.background}
->
-<Image style={styles.logo} source={require('../assets/logo-red.png')}/>
-<View style={styles.button}>
-<TouchableOpacity
-              type="clear"
-              onPress={() => Alert.alert('Simple Button pressed')}> 
-   <Text style = {styles.btnText}>
-       Criar conta
-   </Text>
-</TouchableOpacity >
+<View>
+    <View  style={styles.logoContainer}>
+        <Image style={styles.logo} source={require('../assets/logo-red.png')}/>
+    </View>
+    <View >
+        <Button btnText="Register"/>
+    </View>
 </View>
-<View style={styles.button}>
-<TouchableOpacity
-              type="clear"
-              onPress={() => Alert.alert('Simple Button pressed')}> 
-   <Text style = {styles.btnText}>
-       Login
-   </Text>
-</TouchableOpacity >
-</View>
-</ImageBackground>
-
     );
 }
 
 const styles = StyleSheet.create({
-    background: {
+    logoContainer: {
         alignSelf: 'stretch',
         flex: 1,
-        justifyContent: "flex-end",
         alignItems: "center",
-        backgroundColor: colors.primary,
-    },
-    button: {
-        alignSelf: 'stretch',
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: 'white',
-    },
-    btnText: {
-        color: colors.primary,
-        fontWeight: 'bold',
     },
     logo: {
         width: 100,
         height: 100,
-        position: "absolute",
-        top: 300,
-    },
+    }
 })
 
 export default Welcome;

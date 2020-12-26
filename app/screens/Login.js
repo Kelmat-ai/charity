@@ -1,32 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import colors from '../config/colors.js';
+import Header from '../components/Header';
+import Button from '../components/Button';
 
 export default function Login() {
 
   return (
-<View style={styles.regform}>
-    <Text style={styles.header}>Sign in</Text>
-
+    <ScrollView>
+  <View>
+  <Header title="Sign in" />
+  </View>
+  <View style={styles.regform}>
 <Text style={styles.inputTitle}>Email</Text>
 <TextInput
-    placeholderTextColor={'white'}
+    placeholderTextColor={colors.secondary}
     placeholder="you@example.com"
     style={styles.textInput}
     />
 <Text style={styles.inputTitle}>Password</Text>
 <TextInput
-    placeholderTextColor={'white'}
+    placeholderTextColor={colors.secondary}
+    placeholder="********"
     secureTextEntry={true}
     style={styles.textInput}
     />
-<TouchableOpacity
-    style = {styles.button}
-    type="clear"> 
-   <Text style = {styles.btnText}>Sign in</Text>
-</TouchableOpacity >
 </View>
+<View>
+<Button btnText="Sign in" />
+</View>
+</ScrollView>
   );
 }
 
@@ -36,45 +40,33 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: colors.primary,
-    color: 'white',
+    color: colors.secondary,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: 60,
-    paddingRight: 60,
-  },
-  header: {
-    fontSize: 24,
-    color: 'white',
-    paddingBottom: 10,
-    marginBottom: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 60,
   },
   textInput: {
     paddingLeft: 10,
-    backgroundColor: 'white',
+    paddingBottom: 10,
+    paddingTop: 10,
+    fontSize: 16,
+    backgroundColor: colors.primary,
     alignSelf: 'stretch',
     color: 'black',
-    height: 40,
+    height: 50,
     marginBottom: 20,
-    borderColor: 'black',
+    borderColor: colors.tertiary,
+    borderRadius:15,
     borderWidth: 1,
-  },
-  button: {
-      marginTop: 55,
-      alignSelf: 'stretch',
-      alignItems: 'center',
-      padding: 20,
-      backgroundColor: 'white',
-  },
-  btnText: {
-      color: colors.primary,
-      fontWeight: 'bold',
   },
   inputTitle: {
     fontSize: 14,
     paddingBottom: 10,
-    color: 'white',
+    color: colors.secondary,
     alignSelf: 'stretch',
     alignItems: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   }
 });
