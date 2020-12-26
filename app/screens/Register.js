@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import colors from '../config/colors.js';
 
-export default function RegForm() {
+export default function Register() {
 
   return (
 <View style={styles.regform}>

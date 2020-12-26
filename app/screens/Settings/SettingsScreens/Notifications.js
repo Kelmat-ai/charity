@@ -20,8 +20,8 @@ return(
     <Header title="Notifications" />
     </View>
   <View style={styles.container}>
-    <Text>Notifications</Text>
-    <Switch size={20} style={{marginRight:70}} />
+    <Text style={styles.settingsItem}>Notifications</Text>
+    <Switch size={20} />
   </View>
   </ScrollView>
   );
@@ -36,12 +36,15 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     alignItems: 'flex-start',
     paddingLeft: 30,
-    paddingRight: 60,
+    paddingRight: 30,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 14,
     paddingHorizontal: 16,
-  }
+  },
+  settingsItem: {
+    fontSize: 18,
+  },
 });
 
 export default Notifications;

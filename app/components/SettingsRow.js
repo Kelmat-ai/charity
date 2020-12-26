@@ -6,7 +6,7 @@ import colors from '../config/colors.js';
 const SettingsRow = ({ title, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text bold>{title}</Text>
+      <Text style={styles.settingsItem}>{title}</Text>
       <Ionicons name={"ios-arrow-forward"} size={20} color={colors.secondary} />
     </TouchableOpacity>
   );
@@ -20,13 +20,15 @@ const styles = StyleSheet.create({
       backgroundColor: colors.primary,
       color: colors.secondary,
       alignItems: 'flex-start',
-      justifyContent: 'center',
       paddingLeft: 30,
-      paddingRight: 60,
+      paddingRight: 30,
       flexDirection: "row",
       justifyContent: "space-between",
       paddingVertical: 14,
       paddingHorizontal: 16,
+    },
+    settingsItem: {
+      fontSize: 18,
     }
 });
 
