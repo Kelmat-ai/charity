@@ -6,12 +6,13 @@ import RegForm from './app/screens/RegForm';
 import Login from './app/screens/Login';
 import SettingsScreen from './app/screens/Settings/Settings';
 import Header from './app/components/Header';
+import Notifications from './app/screens/Settings/SettingsScreens/Notifications';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-    <SettingsScreen />
+    <Notifications />
     </View>
   );
 }

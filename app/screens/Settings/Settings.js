@@ -40,7 +40,7 @@ const RowOptions = [
 
 return(
   <ScrollView style={styles.container}>
-        <Header title="Settings"/>
+        <Header  style={styles.header} title="Settings"/>
         {RowOptions.map((item, index) => {
         return (
           <SettingsRow key={index} onPress={item.onPress} title={item.title} />
@@ -72,11 +72,23 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    fontSize: 24,
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    fontSize: 35,
+    fontWeight: "bold",
+    marginTop: Constants.statusBarHeight,
+    flex: 1,
+    width: '100%',
+    backgroundColor: colors.primary,
     color: colors.secondary,
-    paddingLeft: 20,
-    paddingBottom: 10,
-    marginBottom: 10,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingLeft: 30,
+    paddingRight: 60,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 14,
+    paddingHorizontal: 16,
   },
   title: {
     fontSize: 14,
