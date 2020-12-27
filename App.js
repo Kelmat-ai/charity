@@ -9,12 +9,13 @@ import Header from './app/components/Header';
 import Notifications from './app/screens/Settings/SettingsScreens/Notifications';
 import ContactUs from './app/screens/Settings/SettingsScreens/ContactUs';
 import EditDetails from './app/screens/Settings/SettingsScreens/EditDetails';
+import Drawer from './app/Drawer';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-    <Welcome />
+    <Drawer />
     </View>
   );
 }
