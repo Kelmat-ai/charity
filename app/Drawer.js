@@ -16,7 +16,7 @@ function NotificationsScreen({ navigation }) {
 
 const Drawer = createDrawerNavigator();
 
-export default function App() {
+export default function SliderMenu() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
