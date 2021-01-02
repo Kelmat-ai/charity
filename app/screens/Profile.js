@@ -10,10 +10,10 @@ const Profile = () => {
   <View >
   <ImageBackground style={styles.ImageBackground} source={ {uri: "https://reactjs.org/logo-og.png"} }></ImageBackground>
   </View>
-  <View  style={styles.AvatarContainer}>
+  <View>
     <CharAvatar />
   </View>
-  <View>
+  <View style={styles.CharDescripContainer}>
   <CharDescrip />
   </View>
 </View>
@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
     ImageBackground: {
       height: 300,
       width: '100%',
+    },
+    CharDescripContainer: {
+      marginTop: 80,
+      flex: 1,
+      flexDirection: "row",
+      justifyContent: 'center',
     }
   });
 
