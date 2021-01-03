@@ -2,12 +2,42 @@ import React from 'react';
 import { StyleSheet, Text, Image, ImageBackground, View, ScrollView } from 'react-native';
 import colors from '../config/colors';
 import { List } from 'react-native-paper';
+import { Ionicons } from "@expo/vector-icons";
+import Button from './Button';
 
-const Detail = () => (
+const DetailLocation = () => (
   <List.Item
-    title="First Item"
-    description="Item description"
-    left={props => <List.Icon {...props} icon="folder" />}
+    style={styles.CharityDetails}
+    title="Location"
+    description="Lisboa, Portugal"
+    left={props => <List.Icon {...props}   color= {colors.secondary}  icon={"map-marker"} />}
+  />
+);
+
+const DetailTax = () => (
+  <List.Item
+    style={styles.CharityDetails}
+    title="Tax benefits"
+    description="40%"
+    left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
+  />
+);
+
+const DetailFoundation = () => (
+  <List.Item
+    style={styles.CharityDetails}
+    title="Foundation year"
+    description="2020"
+    left={props => <List.Icon {...props}  color= {colors.secondary} icon={"calendar-range"}/>}
+  />
+);
+
+const DetailFieldofWork = () => (
+  <List.Item
+    style={styles.CharityDetails}
+    title="Impact"
+    description="Social"
+    left={props => <List.Icon {...props}  color= {colors.secondary}  icon={"passport-biometric"}/>}
   />
 );
 
@@ -22,10 +52,18 @@ function CharDescrip(props) {
             É um trabalho árduo, mas faz o Mundo melhor a cada dia que passa. Quero 250 caracteres rapaz.
             </Text>
         </View>
-            <View style={styles.CharityOverviewContainer}>
-            <Text  style={styles.TagTitle}>Details</Text>
+        <View style={styles.ButtonContainer}>
+          <Button btnText="Donate now"/>
+        </View>
             <View>
-            <Detail style={styles.ListItem}></Detail>
+            <View>
+            <Text  style={styles.TagTitle}>Details</Text>
+            </View>
+            <View style={styles.CharityDetailsContainer}>
+            <DetailTax/>
+            <DetailLocation/>
+            <DetailFoundation/>
+            <DetailFieldofWork/>
             </View>
         </View>
         <View style={styles.CharityOverviewContainer}>
@@ -54,11 +92,25 @@ const styles = StyleSheet.create({
         paddingRight: 20,
       },
       CharityOverviewContainer: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: 'center',
+        marginBottom: 20,
+    },
+    ButtonContainer: {
       flex: 1,
       flexDirection: "row",
       justifyContent: 'center',
-      marginBottom: 20,
-    },
+      marginBottom: 65,
+      marginTop: 30,
+  },
+    CharityDetailsContainer: {
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 20,
+      },
     TagTitle: {
         marginTop: 10,
         width: '100%',
@@ -67,14 +119,14 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'black',
       },
-      ListItem: {
-          marginTop: 10,
-          width: '100%',
-          alignItems: 'flex-start',
-          textAlign: 'center',
-          fontSize: 18,
-          color: 'black',
-        },
+    CharityDetails: {
+        width: '100%',
+        marginBottom: -15,
+        alignItems: 'center',
+        textAlign: 'center',
+        fontSize: 18,
+        color: 'black',
+      },
 });
 
-export default CharDescrip; Detail;
+export default CharDescrip;
