@@ -5,7 +5,7 @@ import { List } from 'react-native-paper';
 import { Ionicons } from "@expo/vector-icons";
 import Button from './Button';
 
-const DetailLocation = () => (
+export const DetailLocation = () => (
   <List.Item
     style={styles.CharityDetails}
     title="Location"
@@ -14,7 +14,7 @@ const DetailLocation = () => (
   />
 );
 
-const DetailTax = () => (
+export const DetailTax = () => (
   <List.Item
     style={styles.CharityDetails}
     title="Tax benefits"
@@ -23,7 +23,7 @@ const DetailTax = () => (
   />
 );
 
-const DetailFoundation = () => (
+export const DetailFoundation = () => (
   <List.Item
     style={styles.CharityDetails}
     title="Foundation year"
@@ -32,7 +32,7 @@ const DetailFoundation = () => (
   />
 );
 
-const DetailFieldofWork = () => (
+export const DetailFieldofWork = () => (
   <List.Item
     style={styles.CharityDetails}
     title="Impact"

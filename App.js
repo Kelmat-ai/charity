@@ -12,12 +12,13 @@ import EditDetails from './app/screens/Settings/SettingsScreens/EditDetails';
 import Drawer from './app/Drawer';
 import Menu from './app/components/Menu';
 import Profile from './app/screens/Profile';
+import Favourites from './app/screens/Favourites';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-    <Profile />
+    <Favourites />
     </View>
   );
 }
