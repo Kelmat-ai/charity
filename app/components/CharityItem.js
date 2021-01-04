@@ -10,18 +10,25 @@ import { Ionicons } from "@expo/vector-icons";
 export const CardDetailLocation = () => (
     <List.Item
       style={styles.CardCharityDetails}
+      descriptionStyle={{fontSize: 16}}
+      titleStyle={{fontSize: 16}}
       description="Lisboa, Portugal"
-      left={props => <List.Icon {...props}   color= {colors.secondary}  icon={"map-marker"} />}
+      title="Lisboa, Portugal"
+      descriptionNumberOfLines={1}
+      left={props => <List.Icon {...props} style={{marginLeft: -10,marginRight: -10}} color= {colors.secondary}  icon={"map-marker"} />}
     />
   );
   
-  export const CardDetailTax = () => (
-    <List.Item
-      style={styles.CardCharityDetails}
-      description="40%"
-      left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
-    />
-  );
+  // export const CardDetailTax = () => (
+  //   <List.Item
+  //     style={styles.CardCharityDetails}
+  //     description="40%"
+  //     title="40%"
+  //     titleStyle={{fontSize: 16}}
+  //     descriptionStyle={{fontSize: 16}}
+  //     left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
+  //   />
+  // );
 
 function CharityItem(props) {
     return (
@@ -35,7 +42,6 @@ function CharityItem(props) {
           <View  style={styles.CardContentTitle}>
             <Title color= {colors.secondary}>Greenpeace</Title>
             <View style={styles.CardContentDetails}>
-            <CardDetailTax />
             <CardDetailLocation />
             </View>
             </View>
@@ -61,28 +67,28 @@ const styles = StyleSheet.create({
         width: '100%',
       },
       ImageContainer: {
-        flex: 1,
+        flex: 0.7,
+        // paddingHorizontal: 30,
+        // paddingVertical: 30,
     },
     CardContent: {
-        height: 150,
-        width: '100%',
-
+      height: 150,
+      width: '100%',
     },
     ContentContainer: {
         flex: 1,
     },
     CardContentTitle: {
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 20,
+        marginTop: 15,
     },
     CardContentDetails: {
-        width: '100%',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        alignSelf: 'stretch',
     },
     CardCharityDetails: {
         width: '100%',
+        marginTop: -10,
+        marginLeft: -20,
     },
   });
 
