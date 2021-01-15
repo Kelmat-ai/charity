@@ -13,12 +13,13 @@ import Drawer from './app/Drawer';
 import Menu from './app/components/Menu';
 import Profile from './app/screens/Profile';
 import Favourites from './app/screens/Favourites';
+import Search from './app/components/Search';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-    <Favourites />
+    <Search />
     </View>
   );
 }
