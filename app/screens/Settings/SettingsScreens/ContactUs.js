@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import Button from '../../../components/Button.js';
 import Header from '../../../components/Header.js';
+import { GoBack } from '../../../components/Menu.js';
 import colors from '../../../config/colors.js';
 
 export default function ContactUs(props) {
@@ -12,6 +13,7 @@ export default function ContactUs(props) {
 <ScrollView>
     <View>
     <Header title="Contact us" />
+    <GoBack />
     </View>
     <View>
 <TextInput

@@ -10,7 +10,7 @@ import Notifications from './app/screens/Settings/SettingsScreens/Notifications'
 import ContactUs from './app/screens/Settings/SettingsScreens/ContactUs';
 import EditDetails from './app/screens/Settings/SettingsScreens/EditDetails';
 import Drawer from './app/Drawer';
-import Menu from './app/components/Menu';
+import {Menu, GoBack, Favourite, Filter, SearchIcon} from './app/components/Menu';
 import Profile from './app/screens/Profile';
 import Favourites from './app/screens/Favourites';
 import Search from './app/components/Search';
@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    <HomeScreen />
+    <Profile />
     </View>
   );
 }

@@ -11,6 +11,7 @@ import {
   } from "react-native";
 import CharityItem from '../components/CharityItem.js';
   import Header from '../components/Header.js';
+import { Menu, GoBack } from '../components/Menu.js';
   import colors from '../config/colors.js';
 
 function Favourites(props) {
@@ -18,6 +19,7 @@ function Favourites(props) {
         <ScrollView>
         <View>
         <Header title="Your charities" />
+      <Menu />
         </View>
       <View style={styles.CharityItemContainer}>
           <CharityItem />

@@ -3,10 +3,15 @@ import React from 'react';
 import CharAvatar from '../components/Avatar';
 import CharDescrip from '../components/CharDescrip';
 import colors from '../config/colors';
+import { Favourite, GoBack, Menu } from '../components/Menu';
 
 const Profile = () => {
   return(
 <View style={styles.ImageBackgroundContainer}>
+    <View  style={styles.Header}>
+      <GoBack />
+      <Favourite />
+    </View>
   <View >
   <ImageBackground style={styles.ImageBackground} source={ {uri: "https://reactjs.org/logo-og.png"} }></ImageBackground>
   </View>
@@ -37,7 +42,11 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: "row",
       justifyContent: 'center',
-    }
+    },
+    Header: {
+      zIndex: 1,
+      elevation: 1,
+    },
   });
 
 export default Profile;

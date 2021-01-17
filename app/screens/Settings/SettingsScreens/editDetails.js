@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 
 import colors from '../../../config/colors.js';
 import Header from '../../../components/Header';
 import Button from '../../../components/Button';
+import { GoBack } from '../../../components/Menu.js';
 
 export default function EditDetails() {
 
@@ -11,6 +12,7 @@ export default function EditDetails() {
     <ScrollView>
   <View>
   <Header title="Your account details" />
+  <GoBack />
   </View>
   <View style={styles.regform}>
 <Text style={styles.inputTitle}>Name</Text>

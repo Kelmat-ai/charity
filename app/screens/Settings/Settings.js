@@ -14,6 +14,7 @@ import {
   SectionList
 } from "react-native";
 import Constants from "expo-constants";
+import { Menu } from '../../components/Menu.js';
 
 const SettingsScreen = (props) => {
 
@@ -40,7 +41,10 @@ const RowOptions = [
 
 return(
   <ScrollView>
+    <View>
         <Header title="Settings"/>
+        <Menu />
+        </View>
         {RowOptions.map((item, index) => {
         return (
           <SettingsRow key={index} onPress={item.onPress} title={item.title} />

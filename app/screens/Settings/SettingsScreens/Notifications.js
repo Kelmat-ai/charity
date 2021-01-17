@@ -11,6 +11,7 @@ import {
   Switch
 } from "react-native";
 import Constants from "expo-constants";
+import { GoBack } from '../../../components/Menu.js';
 
 const Notifications = (props) => {
 
@@ -18,6 +19,7 @@ return(
     <ScrollView>
     <View>
     <Header title="Notifications" />
+    <GoBack />
     </View>
   <View style={styles.container}>
     <Text style={styles.settingsItem}>Notifications</Text>

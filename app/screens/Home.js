@@ -17,12 +17,15 @@ import { Title } from 'react-native-paper';
 import Constants from "expo-constants";
 import CategoryCard from '../components/HomeCategory.js';
 import { Divider } from 'react-native-paper';
+import { Menu, SearchIcon } from '../components/Menu.js';
 
 const HomeScreen = (props) => {
 
 return(
   <ScrollView>
+        <View>
         <Header title="Home"/>
+        </View>
         <View style={styles.HomeContainer}>
   <View  style={styles.CategoryTitleContainer}>
     <Title>Area of impact</Title>

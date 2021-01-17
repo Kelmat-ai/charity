@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet, View, TextInput} from "react-native";
 import colors from '../config/colors.js';
 import Constants from "expo-constants";
+import { Menu, SearchIcon } from "./Menu.js";
 
 const Header = ({ title }) => {
   return (
