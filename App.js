@@ -14,12 +14,13 @@ import Menu from './app/components/Menu';
 import Profile from './app/screens/Profile';
 import Favourites from './app/screens/Favourites';
 import Search from './app/components/Search';
+import HomeScreen from './app/screens/Home';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-    <Search />
+    <HomeScreen />
     </View>
   );
 }
