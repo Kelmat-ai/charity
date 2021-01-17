@@ -16,7 +16,7 @@ import {
 import { Title } from 'react-native-paper';
 import Constants from "expo-constants";
 import CategoryCard from '../components/HomeCategory.js';
-
+import { Divider } from 'react-native-paper';
 
 const HomeScreen = (props) => {
 
@@ -28,6 +28,9 @@ return(
     <Title>Area of impact</Title>
     <Text>Choose one below to see associated NGO's.</Text>
   </View>
+  <View style={styles.DividerContainer}>
+      <Divider style={styles.Divider} />
+    </View>
   <View>
     <View   style={styles.CategoryCardContainer}>
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/1.png')} />
@@ -66,10 +69,15 @@ const styles = StyleSheet.create({
       marginBottom: 20,
   },
   CategoryTitleContainer: {
-    marginBottom: 20,
+    marginBottom: 10,
     marginHorizontal: 20,
 },
-  HomeContainer: {
+  DividerContainer: {
+    marginHorizontal: 15,
+    marginBottom: 20,
+},
+Divider: {
+height: 1.5,
 }
 });
 
