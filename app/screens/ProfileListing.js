@@ -15,13 +15,16 @@ import CharityItem from '../components/CharityItem.js';
 import { Menu, GoBack } from '../components/Menu.js';
   import colors from '../config/colors.js';
 
-function Favourites(props) {
+function ProfileListingScreen(props) {
     return (
         <ScrollView>
         <View>
         <Header title="Your charities" />
       <Menu />
         </View>
+      <View style={styles.CharityItemContainer}>
+          <CharityItem />
+      </View>
       <View style={styles.CharityItemContainer}>
           <CharityItem />
       </View>
@@ -46,4 +49,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Favourites;
+export default ProfileListingScreen;

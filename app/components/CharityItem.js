@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import colors from '../config/colors.js';
 import { Card, Title, Paragraph, Image } from 'react-native-paper';
 import Button from './Button.js';
@@ -31,8 +32,9 @@ export const CardDetailLocation = () => (
   // );
 
 function CharityItem(props) {
+  const navigation = useNavigation();
     return (
-        <Card style={styles.CardContainer}>
+        <Card style={styles.CardContainer} onPress={() => navigation.navigate("Profile")} >
             <View style={styles.container}>
     <View style={styles.ImageContainer}>
       <Card.Cover  style={styles.CardImage} source={{ uri: 'https://picsum.photos/700' }} />

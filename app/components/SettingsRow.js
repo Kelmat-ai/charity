@@ -1,11 +1,13 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity, Text, StyleSheet, View, TextInput} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import colors from '../config/colors.js';
 
-const SettingsRow = ({ title, onPress }) => {
+const SettingsRow = ({ title }) => {
+  const navigation = useNavigation(); 
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate("Favourites")}>
       <Text style={styles.settingsItem}>{title}</Text>
       <Ionicons name={"ios-arrow-forward"} size={20} color={colors.secondary} />
     </TouchableOpacity>

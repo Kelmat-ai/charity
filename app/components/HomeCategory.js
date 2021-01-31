@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 import {
   StyleSheet,
@@ -13,11 +14,16 @@ import {
 } from "react-native";
 import colors from '../config/colors.js';
 
-const CategoryCard = ({ CategoryImgLink }) => (
-  <View style = {styles.CategoryImgContainer}>
-  <Image  source={CategoryImgLink}   style = {styles.CategoryImg} />
-  </View>
-);
+function CategoryCard({ CategoryImgLink }) {
+  const navigation = useNavigation(); 
+  return(
+    <View style = {styles.CategoryImgContainer}>
+    <TouchableOpacity  onPress={() => navigation.navigate("ProfileListing")} >
+    <Image  source={CategoryImgLink} style = {styles.CategoryImg}/>
+    </TouchableOpacity>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   CategoryImg: {

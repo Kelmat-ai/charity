@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import colors from '../config/colors.js';
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import Header from '../components/Header.js';
 import { Avatar } from 'react-native-paper';
 import {
@@ -18,8 +18,10 @@ import Constants from "expo-constants";
 import CategoryCard from '../components/HomeCategory.js';
 import { Divider } from 'react-native-paper';
 import { Menu, SearchIcon } from '../components/Menu.js';
+import Favourites from './Favourites.js';
+import Button from '../components/Button.js';
 
-const HomeScreen = (props) => {
+function HomeScreen ( {navigation}) {
 
 return(
   <ScrollView>
@@ -29,7 +31,7 @@ return(
         <View style={styles.HomeContainer}>
   <View  style={styles.CategoryTitleContainer}>
     <Title>Area of impact</Title>
-    <Text>Choose one below to see associated NGO's.</Text>
+    <Text>Choose one below to see associated NGO's</Text>
   </View>
   <View style={styles.DividerContainer}>
       <Divider style={styles.Divider} />
@@ -52,7 +54,7 @@ return(
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/14.png')}  />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/15.png')}  />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/16.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/17.png')}  />
+      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/17.png')} />
     </View>
   </View>
   </View>
