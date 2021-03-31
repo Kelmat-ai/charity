@@ -13,13 +13,25 @@ import {
   SectionList
 } from "react-native";
 import colors from '../config/colors.js';
+import axios from 'axios';
 
-function CategoryCard({ CategoryImgLink }) {
+function getCharity3(charAffiliation) {
+  const url = `http://192.168.1.69:3000/${charAffiliation}`
+  axios.get(url)
+  .then((response) => {
+    console.log(response.data);
+  }, (error) => {console.log(error);
+  });
+  }
+
+function CategoryCard(props) {
+
   const navigation = useNavigation(); 
   return(
     <View style = {styles.CategoryImgContainer}>
-    <TouchableOpacity  onPress={() => navigation.navigate("ProfileListing")} >
-    <Image  source={CategoryImgLink} style = {styles.CategoryImg}/>
+    <TouchableOpacity  onPress={() => navigation.navigate("ProfileListing", {charAffiliation: props.charAffiliation})}>
+    {/* onPress={() =>  getCharity3(props.charAffiliation)} */}
+    <Image  source={props.CategoryImgLink} style = {styles.CategoryImg}/>
     </TouchableOpacity>
     </View>
   );

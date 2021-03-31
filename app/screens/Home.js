@@ -20,6 +20,21 @@ import { Divider } from 'react-native-paper';
 import { Menu, SearchIcon } from '../components/Menu.js';
 import Favourites from './Favourites.js';
 import Button from '../components/Button.js';
+import axios from 'axios';
+
+ function getCharity() {axios.get('http://192.168.1.69:3000/charities/33')
+.then((response) => {
+  console.log(response);
+}, (error) => {
+  console.log(error);
+  console.log('123')
+});
+}
+
+// const getCharity2 = {
+//   method: 'get',
+//   url: `http://192.168.1.69:3000/${charAffiliation}`,
+// }
 
 function HomeScreen ( {navigation}) {
 
@@ -38,7 +53,7 @@ return(
     </View>
   <View>
     <View   style={styles.CategoryCardContainer}>
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/1.png')} />
+      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/1.png')} charAffiliation = "ONGA" />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/2.png')}  />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/3.png')}  />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/4.png')}  />

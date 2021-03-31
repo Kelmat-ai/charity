@@ -16,6 +16,9 @@ import { Menu, GoBack } from '../components/Menu.js';
   import colors from '../config/colors.js';
 
 function Favourites(props) {
+  // props = {
+  //   charId: [], 
+  // }
     return (
         <ScrollView>
         <View>

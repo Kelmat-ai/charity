@@ -53,7 +53,7 @@ function CharDescrip(props) {
             </Text>
         </View>
         <View style={styles.ButtonContainer}>
-          <Button btnText="Donate now"/>
+          <Button btnText="Know more"/>
         </View>
             <View>
             <View>

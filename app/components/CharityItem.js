@@ -7,8 +7,10 @@ import { DetailLocation, DetailTax } from './CharDescrip.js';
 import { StyleSheet, Text, ImageBackground, View, ScrollView } from 'react-native';
 import { List } from 'react-native-paper';
 import { Ionicons } from "@expo/vector-icons";
+import axios from 'axios';
 
 export const CardDetailLocation = () => (
+  
     <List.Item
       style={styles.CardCharityDetails}
       descriptionStyle={{fontSize: 16}}
@@ -30,6 +32,13 @@ export const CardDetailLocation = () => (
   //     left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
   //   />
   // );
+
+  // axios.get('/charities/33')
+  // .then((response) => {
+  //   console.log(response);
+  // }, (error) => {
+  //   console.log(error);
+  // });
 
 function CharityItem(props) {
   const navigation = useNavigation();
