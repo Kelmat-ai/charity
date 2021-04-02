@@ -4,10 +4,15 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Linkin
 import colors from '../config/colors.js';
 
 function ButtonWebsite(props) {
+  if (!(props.website.startsWith('http://'))) {
+  var httpWebsite = `http://${props.website}`
+    } else {
+      httpWebsite = props.website
+    }
   return (
 <View style = {styles.container}>
 <TouchableOpacity
-    onPress= {() =>{Linking.openURL(props.website) }}
+    onPress= {() =>{Linking.openURL(httpWebsite) }}
     style = {styles.button}
     type="clear"> 
    <Text style = {styles.btnText}>{props.btnText}</Text>

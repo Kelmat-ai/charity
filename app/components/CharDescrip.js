@@ -48,17 +48,20 @@ function CharDescrip(props) {
     return (
     <ScrollView>
         <Text style={styles.CharityName}>{props.route.params.props.charity_name}</Text>
-        <View style={styles.ButtonContainer}>
+        {props.route.params.props.website != null &&
+          <View style={styles.ButtonContainer}>
           <ButtonWebsite btnText="Know more" website={props.route.params.props.website}/>
-        </View>
+          </View>
+        }
             <View>
             <View>
             <Text  style={styles.TagTitle}>Details</Text>
             </View>
             <View style={styles.CharityDetailsContainer}>
+            {(props.route.params.props.city != null || props.route.params.props.address != null)
+            &&
             <DetailLocation city ={props.route.params.props.city} address={props.route.params.props.address}/>
-            {/* <DetailTax/>
-            <DetailFoundation/> */}
+            }
             <DetailFieldofWork affiliation={props.route.params.props.affiliation}/>
             </View>
         </View>
