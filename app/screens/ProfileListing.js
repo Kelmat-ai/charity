@@ -41,7 +41,7 @@ function ProfileListingScreen(props) {
       {
         charities.map(charity => {
           return (<View key={charity.id} style={styles.CharityItemContainer}>
-            <Text>{charity.website}</Text>
+            <CharityItem {...charity}/>
           </View>
           )
         })}

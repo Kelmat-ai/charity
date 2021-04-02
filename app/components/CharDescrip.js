@@ -1,41 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, Image, ImageBackground, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, Image, ImageBackground, View, ScrollView, Linking } from 'react-native';
 import colors from '../config/colors';
 import { List } from 'react-native-paper';
 import { Ionicons } from "@expo/vector-icons";
-import Button from './Button';
+import {ButtonWebsite} from './Button';
+import { useEffect } from 'react';
+import PropTypes from "prop-types";
+import { useNavigation } from '@react-navigation/native';
 
-export const DetailLocation = () => (
+export const DetailLocation = (props) => (
   <List.Item
     style={styles.CharityDetails}
-    title="Location"
-    description="Lisboa, Portugal"
+    title={props.city}
+    description={props.address}
     left={props => <List.Icon {...props}   color= {colors.secondary}  icon={"map-marker"} />}
   />
 );
 
-export const DetailTax = () => (
-  <List.Item
-    style={styles.CharityDetails}
-    title="Tax benefits"
-    description="40%"
-    left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
-  />
-);
+// export const DetailTax = () => (
+//   <List.Item
+//     style={styles.CharityDetails}
+//     title="Tax benefits"
+//     description="40%"
+//     left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
+//   />
+// );
 
-export const DetailFoundation = () => (
-  <List.Item
-    style={styles.CharityDetails}
-    title="Foundation year"
-    description="2020"
-    left={props => <List.Icon {...props}  color= {colors.secondary} icon={"calendar-range"}/>}
-  />
-);
+// export const DetailFoundation = () => (
+//   <List.Item
+//     style={styles.CharityDetails}
+//     title="Foundation year"
+//     description="2020"
+//     left={props => <List.Icon {...props}  color= {colors.secondary} icon={"calendar-range"}/>}
+//   />
+// );
 
-export const DetailFieldofWork = () => (
+export const DetailFieldofWork = (props) => (
   <List.Item
     style={styles.CharityDetails}
-    title="Impact"
+    title={props.affiliation}
     description="Social"
     left={props => <List.Icon {...props}  color= {colors.secondary}  icon={"passport-biometric"}/>}
   />
@@ -44,26 +47,19 @@ export const DetailFieldofWork = () => (
 function CharDescrip(props) {
     return (
     <ScrollView>
-        <Text style={styles.CharityName}>Greenpeace</Text>
-        <View style={styles.CharityOverviewContainer}>
-            <Text style={styles.CharityOverview} multiline={true}>
-            Isto é um exemplo de um texto escrito por uma caridade. Na Exempleriny, fazemos exemplos com amor
-                e ilustramos situações gerais com casos particulares. 
-            É um trabalho árduo, mas faz o Mundo melhor a cada dia que passa. Quero 250 caracteres rapaz.
-            </Text>
-        </View>
+        <Text style={styles.CharityName}>{props.route.params.props.charity_name}</Text>
         <View style={styles.ButtonContainer}>
-          <Button btnText="Know more"/>
+          <ButtonWebsite btnText="Know more" website={props.route.params.props.website}/>
         </View>
             <View>
             <View>
             <Text  style={styles.TagTitle}>Details</Text>
             </View>
             <View style={styles.CharityDetailsContainer}>
-            <DetailTax/>
-            <DetailLocation/>
-            <DetailFoundation/>
-            <DetailFieldofWork/>
+            <DetailLocation city ={props.route.params.props.city} address={props.route.params.props.address}/>
+            {/* <DetailTax/>
+            <DetailFoundation/> */}
+            <DetailFieldofWork affiliation={props.route.params.props.affiliation}/>
             </View>
         </View>
         <View style={styles.CharityOverviewContainer}>
@@ -72,6 +68,10 @@ function CharDescrip(props) {
     </ScrollView>
     );
 }
+
+// CharDescrip.propTypes = {
+//   charity_name: PropTypes.string.isRequired, // must be a string and defined
+// };
 
 const styles = StyleSheet.create({
     CharityName: {

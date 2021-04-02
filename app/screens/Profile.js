@@ -5,7 +5,7 @@ import CharDescrip from '../components/CharDescrip';
 import colors from '../config/colors';
 import { Favourite, GoBack, Menu } from '../components/Menu';
 
-const Profile = () => {
+const Profile = (props) => {
   return(
 <View style={styles.ImageBackgroundContainer}>
     <View  style={styles.Header}>
@@ -19,7 +19,7 @@ const Profile = () => {
     <CharAvatar />
   </View>
   <View style={styles.CharDescripContainer}>
-  <CharDescrip />
+  <CharDescrip {...props} />
   </View>
 </View>
 )

@@ -9,14 +9,14 @@ import { List } from 'react-native-paper';
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 
-export const CardDetailLocation = () => (
-  
+export const CardDetailLocation = (props) => (
+
     <List.Item
       style={styles.CardCharityDetails}
       descriptionStyle={{fontSize: 16}}
       titleStyle={{fontSize: 16}}
-      description="Lisboa, Portugal"
-      title="Lisboa, Portugal"
+      // description={props.city}
+      title={props.city}
       descriptionNumberOfLines={1}
       left={props => <List.Icon {...props} style={{marginLeft: -10,marginRight: -10}} color= {colors.secondary}  icon={"map-marker"} />}
     />
@@ -42,8 +42,10 @@ export const CardDetailLocation = () => (
 
 function CharityItem(props) {
   const navigation = useNavigation();
+
     return (
-        <Card style={styles.CardContainer} onPress={() => navigation.navigate("Profile")} >
+
+        <Card style={styles.CardContainer} onPress={() => navigation.navigate("Profile", {props})} >
             <View style={styles.container}>
     <View style={styles.ImageContainer}>
       <Card.Cover  style={styles.CardImage} source={{ uri: 'https://picsum.photos/700' }} />
@@ -51,9 +53,9 @@ function CharityItem(props) {
       <View style={styles.ContentContainer}>
       <Card.Content style={styles.CardContent}>
           <View  style={styles.CardContentTitle}>
-            <Title color= {colors.secondary}>Greenpeace</Title>
+            <Title color= {colors.secondary}>{props.charity_name}</Title>
             <View style={styles.CardContentDetails}>
-            <CardDetailLocation />
+            <CardDetailLocation city={props.city} />
             </View>
             </View>
     </Card.Content>

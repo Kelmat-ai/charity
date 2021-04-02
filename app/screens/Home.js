@@ -54,22 +54,9 @@ return(
   <View>
     <View   style={styles.CategoryCardContainer}>
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/1.png')} charAffiliation = "ONGA" />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/2.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/3.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/4.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/5.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/6.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/7.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/8.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/9.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/10.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/11.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/12.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/13.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/14.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/15.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/16.png')}  />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/17.png')} />
+      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/2.png')} charAffiliation = "ONGD"   />
+      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/3.png')} charAffiliation = "ONGM"   />
+      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/4.png')} charAffiliation = "ONGPD"   />
     </View>
   </View>
   </View>

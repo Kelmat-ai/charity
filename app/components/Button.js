@@ -1,21 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import colors from '../config/colors.js';
 
-export default function Button({ btnText }) {
+function ButtonWebsite(props) {
+  return (
+<View style = {styles.container}>
+<TouchableOpacity
+    onPress= {() =>{Linking.openURL(props.website) }}
+    style = {styles.button}
+    type="clear"> 
+   <Text style = {styles.btnText}>{props.btnText}</Text>
+</TouchableOpacity >
+</View>
+  )
+};
+
+function Button(props) {
 
   return (
 <View style = {styles.container}>
 <TouchableOpacity
     style = {styles.button}
     type="clear"> 
-   <Text style = {styles.btnText}>{btnText}</Text>
+   <Text style = {styles.btnText}>{props.btnText}</Text>
 </TouchableOpacity >
 </View>
 
   )
 }
+
   const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -38,3 +52,5 @@ export default function Button({ btnText }) {
         fontWeight: 'normal',
     }
   });
+
+export {Button, ButtonWebsite}
