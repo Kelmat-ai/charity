@@ -1,11 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import colors from '../config/colors.js';
 import Header from '../components/Header';
 import Button from '../components/Button';
+import axios from 'axios';
 
 export default function Login() {
+// const [email, setEmail] = useState()
+const [username, setUsername] = useState()
+const [password, setPassword] = useState()
+function signIn() {
+  axios.post('http://192.168.1.69:3000/api/auth/signin', { 
+    // email: email,
+    username: username,
+    password: password,
+  }).then((response) => {
+    console.log(response);
+  }, (error) => {
+    console.log(error);
+  }
+  )}
 
   return (
     <ScrollView>
@@ -13,28 +28,55 @@ export default function Login() {
   <Header title="Sign in" />
   </View>
   <View style={styles.regform}>
-<Text style={styles.inputTitle}>Email</Text>
+<Text style={styles.inputTitle}>Username</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
-    placeholder="you@example.com"
+    onChangeText={(text) => setUsername( text )}
+    placeholder="Jonathan Smitherino"
     style={styles.textInput}
     />
 <Text style={styles.inputTitle}>Password</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
     placeholder="********"
+    onChangeText={(text) => setPassword( text )}
     secureTextEntry={true}
     style={styles.textInput}
     />
 </View>
-<View>
-<Button btnText="Sign in" />
+<View style = {styles.container}>
+<TouchableOpacity
+    style = {styles.button}
+    onPress= {() =>{signIn()}}
+    type="clear"> 
+   <Text style = {styles.btnText}>Sign in</Text>
+</TouchableOpacity >
 </View>
 </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  btnText: {
+    color: colors.primary,
+    fontWeight: 'normal',
+  },
+  container: {
+  flex: 1,
+  justifyContent: 'center',
+  flexDirection: "row",
+  },
+  button: {
+  alignSelf: 'stretch',
+  alignItems: 'center',
+  backgroundColor: colors.secondary,
+  paddingTop:15,
+  paddingBottom:15,
+  borderRadius:15,
+  width: '80%',
+  borderWidth: 1,
+  borderColor: '#fff'
+  },
   regform: {
     alignSelf: 'stretch',
     flex: 1,
