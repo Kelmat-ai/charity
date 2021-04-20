@@ -1,3 +1,6 @@
+const db = require("../models")
+const charities = db.charities
+
 module.exports = function(app) {
 
 app.post('/chars', async (req, res) => {
@@ -24,6 +27,8 @@ app.get('/charities/:charId', async (req, res) => {
 
 app.get('/:charAffiliation', async (req, res) => {
     const charAffiliation = req.params.charAffiliation
+    // const db = require("../models")
+    console.log('23')
     console.log(charAffiliation)
     try {
     const charitySelected = await charities.findAll({
