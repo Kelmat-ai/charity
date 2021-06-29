@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import React from 'react';
 import { StyleSheet, Text, Image, ImageBackground, View, ScrollView, Linking } from 'react-native';
 import colors from '../config/colors';

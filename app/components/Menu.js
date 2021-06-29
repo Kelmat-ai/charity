@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import React from 'react';
 import { Ionicons } from "@expo/vector-icons";
 import colors from './../config/colors.js';

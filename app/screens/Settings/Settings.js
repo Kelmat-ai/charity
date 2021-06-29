@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import { StatusBar } from 'expo-status-bar';
 import colors from '../../config/colors.js';
 import React, { useState } from "react";

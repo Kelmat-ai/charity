@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity, Text, StyleSheet, View, TextInput} from "react-native";

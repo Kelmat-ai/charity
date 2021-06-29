@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import * as React from 'react';
 import { Avatar } from 'react-native-paper';
 import { StyleSheet, Text, Image, ImageBackground, View } from 'react-native';

@@ -1,3 +1,4 @@
+<script src="http://192.168.56.1:19002"></script>
 import { StatusBar } from 'expo-status-bar';
 import colors from '../config/colors.js';
 import React, { useState, Component } from "react";
@@ -21,6 +22,8 @@ import { Menu, SearchIcon } from '../components/Menu.js';
 import Favourites from './Favourites.js';
 import Button from '../components/Button.js';
 import axios from 'axios';
+import {useDispatch,useSelector, useStore} from 'react-redux';
+import add from '../redux/actions/actione'
 
  function getCharity() {axios.get('http://192.168.1.69:3000/charities/33')
 .then((response) => {
@@ -31,13 +34,24 @@ import axios from 'axios';
 });
 }
 
-// const getCharity2 = {
-//   method: 'get',
-//   url: `http://192.168.1.69:3000/${charAffiliation}`,
-// }
+function HomeScreen ( {navigation}) { 
+  const dispatch = useDispatch();
+  const store = useStore();
+  const data = useSelector(state => state.your_reducers)
+  // let [Number, setNumber] = useState([]);
+  // Number = 1
+  // setNumber([...Number, 2])
+  // console.log(Number)
+  // add(...Number)
 
-function HomeScreen ( {navigation}) {
-
+  const click = () =>{
+  console.log(data)
+  console.log('1235')
+  // const three = 3
+  dispatch(add)
+  // alert(data + '12')
+  }
+  
 return(
   <ScrollView>
         <View>
@@ -57,6 +71,7 @@ return(
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/2.png')} charAffiliation = "ONGD"   />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/3.png')} charAffiliation = "ONGM"   />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/4.png')} charAffiliation = "ONGPD"   />
+      <Text onPress={()=>click()}> 123</Text>
     </View>
   </View>
   </View>

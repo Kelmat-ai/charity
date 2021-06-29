@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import React from 'react';
 import { useEffect } from 'react';
 import {
@@ -27,7 +28,6 @@ function ProfileListingScreen(props) {
     axios.get(url)
       .then((response) => {
         setCharities(response.data.charitySelected)
-        // console.log(response.data.charitySelected)
         // console.log('123')
         // console.log(Object.keys(charities.charitySelected).length)
       }, (error) => {

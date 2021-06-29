@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import * as React from 'react';
 import { StyleSheet, Text, ImageBackground, View, ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';

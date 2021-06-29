@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "backend": "node index.js"
+    "backend": "node index.js",
+    "devtools": "react-devtools"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -15,12 +16,14 @@
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.9.2",
     "@react-navigation/stack": "^5.14.1",
+    "adb": "^0.2.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "expo": "~39.0.2",
+    "expo-secure-store": "~9.2.0",
     "expo-status-bar": "~1.0.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -29,18 +32,32 @@
     "prop-types": "^15.7.2",
     "psql": "0.0.1",
     "react": "16.13.1",
+    "react-devtools-core": "^4.12.4",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+    "react-native-clean-project": "^3.6.3",
+    "react-native-debugger": "^1.1.0",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-paper": "^4.5.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
+    "react-native-unimodules": "^0.13.3",
     "react-native-web": "~0.13.12",
-    "sequelize": "^6.6.2"
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "rm": "^0.1.8",
+    "sequelize": "^6.6.2",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "~7.9.0",
+    "@types/react-native": "~0.63.2",
+    "reactotron-react-native": "^5.0.0",
+    "remote-redux-devtools": "^0.5.0",
+    "typescript": "~3.9.2"
   },
   "private": true
 }

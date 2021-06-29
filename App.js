@@ -1,3 +1,4 @@
+<script src="http://192.168.56.1:19002"></script>
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,6 +23,8 @@ import HomeScreen from './app/screens/Home';
 import Button from './app/components/Button';
 import TouchableOpacity from 'react-native';
 import ProfileListingScreen from './app/screens/ProfileListing';
+import {Provider} from 'react-redux';
+import Store from './app/redux/store'
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +50,7 @@ function HomeStack () {
       <Stack.Screen name="ContactUs" component={ContactUs} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Logout" component={Login} />
       <Stack.Screen name="Notifications" component={Notifications} />
     </Stack.Navigator>
     );
@@ -61,6 +65,7 @@ function HomeStack () {
       <Drawer.Screen name="Search" component={Search} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Logout" component={Login} />
     </Drawer.Navigator>
     );
       }
@@ -68,9 +73,11 @@ function HomeStack () {
  export default function App() {
 
     return (
+      <Provider store={Store}>
       <NavigationContainer>
       <DrawerStack />
     </NavigationContainer>
+    </Provider>
   );
 }
 

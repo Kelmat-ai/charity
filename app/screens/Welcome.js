@@ -1,3 +1,4 @@
+<script src="http://192.168.1.69:19002"></script>
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Image, Alert, TouchableOpacity, Text, ScrollView } from 'react-native';
 import Button from '../components/Button.js';
