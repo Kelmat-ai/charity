@@ -12,30 +12,18 @@ import * as SecureStore from 'expo-secure-store';
 export default function Login() {
   const navigation = useNavigation();
   // const [email, setEmail] = useState()
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   useEffect(() => {
     checkUserStatus();
   }, []);
 
-  // useEffect(() => {
-  //   if (preLogTest) {
-  //     console.log('wutang')
-  //     signIn();
-  //   }
-  // }, [password, username])
-
   const checkUserStatus = async () => {
     try {
       const credentials = await SecureStore.getItemAsync('userDetails');
       if (credentials) {
-        const ParsedCredentials = JSON.parse(credentials)
-        setUsername(ParsedCredentials.username);
-        setPassword(ParsedCredentials.password);
-        console.log(ParsedCredentials);
-        console.log(username)
-        signIn();
+        navigation.navigate("Home");
       } else {
         // setLoading(false);
       }
@@ -50,9 +38,9 @@ export default function Login() {
       username: username,
       password: password,
     }).then((response) => {
-      credentials = { username, password }
+      const credentials = { username, password }
       console.log(response.status);
-      console.log(username)
+      console.log(credentials)
       if (response.status == '200') {
         SecureStore.setItemAsync('userDetails', JSON.stringify(credentials))
         navigation.navigate("Home");
@@ -60,7 +48,6 @@ export default function Login() {
     }, (error) => {
       console.log('wutang' + error);
     })
-
   }
 
   return (

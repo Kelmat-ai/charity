@@ -16,21 +16,26 @@ import {
   } from '@react-navigation/drawer';
 
 export default function Logout() {
+const navigation = useNavigation();
 
-    const removeCredentials = async () => {
-        try {
-          const credentials = await Keychain.resetGenericPassword();
-          } catch(error) {
-          console.log('Keychain could not be accessed!', error);
-        }
-      }
+  const removeCredentials = async () => {
+    try {
+      await SecureStore.deleteItemAsync('userDetails');
+      navigation.navigate("Login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    function CustomDrawerContent(props) {
-        return (
-          <DrawerContentScrollView {...props}>
-            <DrawerItemList {...props} />
-            <DrawerItem label="Logout" onPress={() => removeCredentials(username,password)} />
-          </DrawerContentScrollView>
-        );
-      }
-   }
+  removeCredentials();
+
+  return null;
+}
+    // function CustomDrawerContent(props) {
+    //     return (
+    //       <DrawerContentScrollView {...props}>
+    //         <DrawerItemList {...props} />
+    //         <DrawerItem label="Logout" onPress={() => removeCredentials()} />
+    //       </DrawerContentScrollView>
+    //     );
+    //   }

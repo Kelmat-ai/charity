@@ -19,6 +19,7 @@ import Favourites from './app/screens/Favourites';
 import Search from './app/components/Search';
 import Register from './app/screens/Register';
 import Login from './app/screens/Login';
+import Logout from './app/screens/Logout';
 import HomeScreen from './app/screens/Home';
 import Button from './app/components/Button';
 import TouchableOpacity from 'react-native';
@@ -50,7 +51,7 @@ function HomeStack () {
       <Stack.Screen name="ContactUs" component={ContactUs} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Logout" component={Login} />
+      <Stack.Screen name="Logout" component={Logout} />
       <Stack.Screen name="Notifications" component={Notifications} />
     </Stack.Navigator>
     );
@@ -65,7 +66,7 @@ function HomeStack () {
       <Drawer.Screen name="Search" component={Search} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Logout" component={Login} />
+      <Stack.Screen name="Logout" component={Logout} />
     </Drawer.Navigator>
     );
       }
