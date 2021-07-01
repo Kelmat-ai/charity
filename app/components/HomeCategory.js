@@ -17,7 +17,7 @@ import colors from '../config/colors.js';
 import axios from 'axios';
 
 function getCharity3(charAffiliation) {
-  const url = `http://192.168.1.69:3000/${charAffiliation}`
+  const url = `http://192.168.1.69:3000/listing/${charAffiliation}`
   axios.get(url)
   .then((response) => {
     console.log(response.data);

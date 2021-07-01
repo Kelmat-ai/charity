@@ -24,7 +24,7 @@ function ProfileListingScreen(props) {
   let [charities, setCharities] = useState([]);
   useEffect(() => {
     const { charAffiliation } = props.route.params;
-    const url = `http://192.168.1.69:3000/${charAffiliation}`
+    const url = `http://192.168.1.69:3000/listing/${charAffiliation}`
     axios.get(url)
       .then((response) => {
         setCharities(response.data.charitySelected)

@@ -4,11 +4,22 @@ import { StyleSheet, Text, ImageBackground, View, ScrollView } from 'react-nativ
 import { Searchbar } from 'react-native-paper';
 import colors from '../config/colors.js';
 import Constants from "expo-constants";
+import axios from 'axios';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
 
-  const onChangeSearch = query => setSearchQuery(query);
+  const onChangeSearch = query => {
+    setSearchQuery(query);
+    const url = 'http://192.168.1.69:3000/search'
+    axios.get(url, {params: {search_query: query} })
+      .then((response) => {
+        // setCharities(response.data.charitySelected)
+        // console.log(response)
+      }, (error) => {
+        console.log(error);
+      });
+    }
 
   return (
       <View style={styles.SearchContainer}>
