@@ -19,8 +19,10 @@ import { useNavigation } from '@react-navigation/native';
 import colors from '../config/colors.js';
 import axios from 'axios';
 import { useState } from 'react';
+import * as Analytics from 'expo-firebase-analytics';
 
 function ProfileListingScreen(props) {
+  Analytics.setCurrentScreen('Profile Listing');
   let [charities, setCharities] = useState([]);
   useEffect(() => {
     const { charAffiliation } = props.route.params;

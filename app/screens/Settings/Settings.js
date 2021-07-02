@@ -16,8 +16,10 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { Menu } from '../../components/Menu.js';
+import * as Analytics from 'expo-firebase-analytics';
 
 const SettingsScreen = (props) => {
+  Analytics.setCurrentScreen('Settings');
 
 const RowOptions = [
   {

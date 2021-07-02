@@ -16,18 +16,22 @@ import {
   SectionList
 } from "react-native";
 import { useState } from 'react';
+import * as Analytics from 'expo-firebase-analytics';
 
 const Search = () => {
+  Analytics.setCurrentScreen('Search');
   let [charities, setCharities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const onChangeSearch = query => {
     setSearchQuery(query);
+    Analytics.logEvent('SearchQuery', {
+      query: query
+    })
     const url = 'http://192.168.1.69:3000/search'
     axios.get(url, {params: {search_query: query} })
       .then((response) => {
         setCharities(response.data.charitySelected)
-        console.log(response)
       }, (error) => {
         console.log(error);
       });

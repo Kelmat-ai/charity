@@ -5,8 +5,18 @@ import CharAvatar from '../components/Avatar';
 import CharDescrip from '../components/CharDescrip';
 import colors from '../config/colors';
 import { Favourite, GoBack, Menu } from '../components/Menu';
+import * as Analytics from 'expo-firebase-analytics';
 
 const Profile = (props) => {
+  Analytics.setCurrentScreen('Profile');
+  Analytics.logEvent('ProfileDetails', {
+    affiliation: props.route.params.props.affiliation,
+    city: props.route.params.props.city,
+    id: props.route.params.props.id,
+    website: props.route.params.props.website,
+    charity_name: props.route.params.props.charity_name
+  })
+
   return(
 <View style={styles.ImageBackgroundContainer}>
     <View  style={styles.Header}>

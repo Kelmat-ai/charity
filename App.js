@@ -26,6 +26,7 @@ import TouchableOpacity from 'react-native';
 import ProfileListingScreen from './app/screens/ProfileListing';
 import {Provider} from 'react-redux';
 import Store from './app/redux/store'
+import * as Analytics from 'expo-firebase-analytics';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -52,7 +53,7 @@ function HomeStack () {
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Logout" component={Logout} />
-      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="Notifications" component={Notifications}/>
     </Stack.Navigator>
     );
     }
@@ -72,6 +73,7 @@ function HomeStack () {
       }
 
  export default function App() {
+  Analytics.setCurrentScreen('Home menu');
 
     return (
       <Provider store={Store}>

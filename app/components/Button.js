@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import colors from '../config/colors.js';
+import * as Analytics from 'expo-firebase-analytics';
 
 function ButtonWebsite(props) {
   if (!(props.website.startsWith('http://'))) {
@@ -10,6 +11,11 @@ function ButtonWebsite(props) {
     } else {
       httpWebsite = props.website
     }
+
+    Analytics.logEvent('WebsiteButtonTapped', {
+      website: httpWebsite,
+    })
+
   return (
 <View style = {styles.container}>
 <TouchableOpacity

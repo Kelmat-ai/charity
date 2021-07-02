@@ -13,8 +13,10 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { GoBack } from '../../../components/Menu.js';
+import * as Analytics from 'expo-firebase-analytics';
 
 const Notifications = (props) => {
+  Analytics.setCurrentScreen('Notifications');
 
 return(
     <ScrollView>

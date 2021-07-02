@@ -6,9 +6,10 @@ import colors from '../../../config/colors.js';
 import Header from '../../../components/Header';
 import Button from '../../../components/Button';
 import { GoBack } from '../../../components/Menu.js';
+import * as Analytics from 'expo-firebase-analytics';
 
 export default function EditDetails() {
-
+  Analytics.setCurrentScreen('EditDetails');
   return (
     <ScrollView>
   <View>

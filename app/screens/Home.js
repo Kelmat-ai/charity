@@ -24,6 +24,7 @@ import Button from '../components/Button.js';
 import axios from 'axios';
 import {useDispatch,useSelector, useStore} from 'react-redux';
 import add from '../redux/actions/actione'
+import * as Analytics from 'expo-firebase-analytics';
 
  function getCharity() {axios.get('http://192.168.1.69:3000/charities/33')
 .then((response) => {
@@ -35,6 +36,7 @@ import add from '../redux/actions/actione'
 }
 
 function HomeScreen ( {navigation}) { 
+  Analytics.setCurrentScreen('Home base');
   const dispatch = useDispatch();
   const store = useStore();
   const data = useSelector(state => state.your_reducers)
@@ -52,6 +54,12 @@ function HomeScreen ( {navigation}) {
   // alert(data + '12')
   }
   
+  const CategoryCardAnalytics = async () => {
+  Analytics.logEvent('CategoryDetails', {
+    affiliation: charAffiliation
+  })
+  }
+
 return(
   <ScrollView>
         <View>

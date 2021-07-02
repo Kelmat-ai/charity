@@ -15,8 +15,10 @@ import CharityItem from '../components/CharityItem.js';
   import Header from '../components/Header.js';
 import { Menu, GoBack } from '../components/Menu.js';
   import colors from '../config/colors.js';
+  import * as Analytics from 'expo-firebase-analytics';
 
 function Favourites(props) {
+  Analytics.setCurrentScreen('Favourites');
   // props = {
   //   charId: [], 
   // }

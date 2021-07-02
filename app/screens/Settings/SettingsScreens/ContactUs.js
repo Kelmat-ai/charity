@@ -6,8 +6,10 @@ import Button from '../../../components/Button.js';
 import Header from '../../../components/Header.js';
 import { GoBack } from '../../../components/Menu.js';
 import colors from '../../../config/colors.js';
+import * as Analytics from 'expo-firebase-analytics';
 
 export default function ContactUs(props) {
+  Analytics.setCurrentScreen('Contact us');
 
   return (
 

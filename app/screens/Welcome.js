@@ -4,8 +4,10 @@ import { ImageBackground, StyleSheet, View, Image, Alert, TouchableOpacity, Text
 import Button from '../components/Button.js';
 import colors from '../config/colors.js';
 import Constants from "expo-constants";
+import * as Analytics from 'expo-firebase-analytics';
 
 function Welcome( {props} ) {
+Analytics.setCurrentScreen('Welcome');
     return (
 <View style={styles.container}>
     <View  style={styles.logoContainer}>

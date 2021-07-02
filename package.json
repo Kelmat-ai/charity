@@ -50,7 +50,9 @@
     "redux-thunk": "^2.3.0",
     "rm": "^0.1.8",
     "sequelize": "^6.6.2",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.10",
+    "expo-firebase-analytics": "~2.5.0",
+    "firebase": "7.9.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

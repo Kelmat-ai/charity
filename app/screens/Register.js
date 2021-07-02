@@ -6,8 +6,10 @@ import {Button} from '../components/Button.js';
 import Header from '../components/Header.js';
 import colors from '../config/colors.js';
 import axios from 'axios';
+import * as Analytics from 'expo-firebase-analytics';
 
 function Register(props) {
+Analytics.setCurrentScreen('Register');
 const [username, setUsername] = useState()
 const [email, setEmail] = useState()
 const [password, setPassword] = useState()

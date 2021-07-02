@@ -8,8 +8,10 @@ import Button from '../components/Button';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
+import * as Analytics from 'expo-firebase-analytics';
 
 export default function Login() {
+  Analytics.setCurrentScreen('Login');
   const navigation = useNavigation();
   // const [email, setEmail] = useState()
   const [username, setUsername] = useState();

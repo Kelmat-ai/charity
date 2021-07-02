@@ -8,6 +8,7 @@ import Button from '../components/Button';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
+import * as Analytics from 'expo-firebase-analytics';
 import {
     createDrawerNavigator,
     DrawerContentScrollView,
@@ -16,6 +17,7 @@ import {
   } from '@react-navigation/drawer';
 
 export default function Logout() {
+  Analytics.setCurrentScreen('Logout');
 const navigation = useNavigation();
 
   const removeCredentials = async () => {
