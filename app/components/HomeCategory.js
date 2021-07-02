@@ -17,15 +17,6 @@ import colors from '../config/colors.js';
 import axios from 'axios';
 import * as Analytics from 'expo-firebase-analytics';
 
-function getCharity3(charAffiliation) {
-  const url = `http://192.168.1.69:3000/listing/${charAffiliation}`
-  axios.get(url)
-  .then((response) => {
-    console.log(response.data);
-  }, (error) => {console.log(error);
-  });
-  }
-
 function CategoryCard(props) {
 
   const navigation = useNavigation();
@@ -35,7 +26,6 @@ function CategoryCard(props) {
       navigation.navigate("ProfileListing", {charAffiliation: props.charAffiliation})
       Analytics.logEvent('CategoryDetails', {charAffiliation: props.charAffiliation})
     }}>
-    {/* onPress={() =>  getCharity3(props.charAffiliation)} */}
     <Image  source={props.CategoryImgLink} style = {styles.CategoryImg}/>
     </TouchableOpacity>
     </View>

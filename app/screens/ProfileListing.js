@@ -35,7 +35,7 @@ function ProfileListingScreen(props) {
       }, (error) => {
         console.log(error);
       });
-  })
+  }, [])
 
 
   return (

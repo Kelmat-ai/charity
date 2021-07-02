@@ -25,8 +25,10 @@ import Button from './app/components/Button';
 import TouchableOpacity from 'react-native';
 import ProfileListingScreen from './app/screens/ProfileListing';
 import {Provider} from 'react-redux';
-import Store from './app/redux/store'
+import Store from './app/redux/store';
+import * as SecureStore from 'expo-secure-store';
 import * as Analytics from 'expo-firebase-analytics';
+import { useEffect } from 'react';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -70,14 +72,15 @@ function HomeStack () {
       <Stack.Screen name="Logout" component={Logout} />
     </Drawer.Navigator>
     );
-      }
+  }
 
  export default function App() {
+  const credentials = SecureStore.getItemAsync('userDetails');
   Analytics.setCurrentScreen('Home menu');
 
     return (
       <Provider store={Store}>
-      <NavigationContainer>
+      <NavigationContainer> 
       <DrawerStack />
     </NavigationContainer>
     </Provider>

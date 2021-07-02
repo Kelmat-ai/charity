@@ -73,10 +73,6 @@ function CharDescrip(props) {
     );
 }
 
-// CharDescrip.propTypes = {
-//   charity_name: PropTypes.string.isRequired, // must be a string and defined
-// };
-
 const styles = StyleSheet.create({
     CharityName: {
       width: '100%',

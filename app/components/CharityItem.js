@@ -34,13 +34,6 @@ export const CardDetailLocation = (props) => (
   //   />
   // );
 
-  // axios.get('/charities/33')
-  // .then((response) => {
-  //   console.log(response);
-  // }, (error) => {
-  //   console.log(error);
-  // });
-
 function CharityItem(props) {
   const navigation = useNavigation();
 
@@ -82,8 +75,6 @@ const styles = StyleSheet.create({
       },
       ImageContainer: {
         flex: 0.7,
-        // paddingHorizontal: 30,
-        // paddingVertical: 30,
     },
     CardContent: {
       height: 150,
