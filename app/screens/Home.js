@@ -40,19 +40,6 @@ function HomeScreen ( {navigation}) {
   const dispatch = useDispatch();
   const store = useStore();
   const data = useSelector(state => state.your_reducers)
-  // let [Number, setNumber] = useState([]);
-  // Number = 1
-  // setNumber([...Number, 2])
-  // console.log(Number)
-  // add(...Number)
-
-  const click = () =>{
-  console.log(data)
-  console.log('1235')
-  // const three = 3
-  dispatch(add)
-  // alert(data + '12')
-  }
   
   const CategoryCardAnalytics = async () => {
   Analytics.logEvent('CategoryDetails', {
@@ -79,7 +66,6 @@ return(
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/2.png')} charAffiliation = "ONGD"   />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/3.png')} charAffiliation = "ONGM"   />
       <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/4.png')} charAffiliation = "ONGPD"   />
-      <Text onPress={()=>click()}> 123</Text>
     </View>
   </View>
   </View>

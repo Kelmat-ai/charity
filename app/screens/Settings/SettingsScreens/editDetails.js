@@ -4,7 +4,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import colors from '../../../config/colors.js';
 import Header from '../../../components/Header';
-import Button from '../../../components/Button';
+import {Button} from '../../../components/Button';
 import { GoBack } from '../../../components/Menu.js';
 import * as Analytics from 'expo-firebase-analytics';
 

@@ -2,7 +2,6 @@
 import { StatusBar } from 'expo-status-bar';
 import colors from '../../../config/colors.js';
 import React, { useState } from "react";
-import SettingsRow from '../../../components/SettingsRow.js';
 import Header from '../../../components/Header.js';
 import {
   StyleSheet,

@@ -33,27 +33,19 @@ import { useEffect } from 'react';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>12345</Text>
-      <Text onPress={() => navigation.navigate("Favourites")} title="Go back home">1234567</Text>
-    </View>
-  );
-}
-
 function HomeStack () {
   return (
     <Stack.Navigator  initialRouteName="Home">
       <Stack.Screen name = "Home" component={HomeScreen}/>
       <Stack.Screen name = "Favourites" component={Favourites}/>
       <Stack.Screen name = "Settings" component={SettingsScreen}/>
-      <Stack.Screen name="Search" component={Search} />
+      <Stack.Screen name="Search" component={Search}/>
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="ProfileListing" component={ProfileListingScreen} />
       <Stack.Screen name="ContactUs" component={ContactUs} />
+      <Stack.Screen name="EditDetails" component={EditDetails} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login} options={{title: "ליאור"}}/>
       <Stack.Screen name="Logout" component={Logout} />
       <Stack.Screen name="Notifications" component={Notifications}/>
     </Stack.Navigator>
@@ -64,11 +56,14 @@ function HomeStack () {
     return(
     <Drawer.Navigator  initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeStack} />
-      <Drawer.Screen name="Favourites" component={Favourites} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
       <Drawer.Screen name="Search" component={Search} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login}
+      // options={{
+      //     swipeEnabled: false,
+      //   }}
+      />
       <Stack.Screen name="Logout" component={Logout} />
     </Drawer.Navigator>
     );

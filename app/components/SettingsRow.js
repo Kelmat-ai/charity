@@ -5,10 +5,10 @@ import { TouchableOpacity, Text, StyleSheet, View, TextInput} from "react-native
 import { Ionicons } from "@expo/vector-icons";
 import colors from '../config/colors.js';
 
-const SettingsRow = ({ title }) => {
+const SettingsRow = ({title}, {navigationDestination}) => {
   const navigation = useNavigation(); 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate("Favourites")}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate(navigationDestination)}>
       <Text style={styles.settingsItem}>{title}</Text>
       <Ionicons name={"ios-arrow-forward"} size={20} color={colors.secondary} />
     </TouchableOpacity>

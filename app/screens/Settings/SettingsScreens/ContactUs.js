@@ -2,7 +2,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import Button from '../../../components/Button.js';
+import {Button} from '../../../components/Button.js';
 import Header from '../../../components/Header.js';
 import { GoBack } from '../../../components/Menu.js';
 import colors from '../../../config/colors.js';
@@ -18,6 +18,7 @@ export default function ContactUs(props) {
     <Header title="Contact us" />
     <GoBack />
     </View>
+
     <View>
 <TextInput
     placeholderTextColor={colors.secondary}
@@ -25,8 +26,7 @@ export default function ContactUs(props) {
     style={styles.textInput}
     multiline={true}
     />
-
-<Button btnText="Send"/>
+    <Button btnText="Send"/>
 </View>
 </ScrollView>
   );
