@@ -12,6 +12,8 @@ import Header from './app/components/Header';
 import Notifications from './app/screens/Settings/SettingsScreens/Notifications';
 import ContactUs from './app/screens/Settings/SettingsScreens/ContactUs';
 import EditDetails from './app/screens/Settings/SettingsScreens/EditDetails';
+import TermsOfUse from './app/screens/Settings/SettingsScreens/TermsOfUse';
+import PrivacyPolicy from './app/screens/Settings/SettingsScreens/PrivacyPolicy';
 // import Drawer from './app/Drawer';
 import {Menu, GoBack, Favourite, Filter, SearchIcon} from './app/components/Menu';
 import Profile from './app/screens/Profile';
@@ -44,6 +46,8 @@ function HomeStack () {
       <Stack.Screen name="ProfileListing" component={ProfileListingScreen} />
       <Stack.Screen name="ContactUs" component={ContactUs} />
       <Stack.Screen name="EditDetails" component={EditDetails} />
+      <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} options={{title: "ליאור"}}/>
       <Stack.Screen name="Logout" component={Logout} />

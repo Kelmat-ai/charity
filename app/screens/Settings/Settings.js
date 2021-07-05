@@ -34,11 +34,11 @@ const RowOptions = [
   },
   {
     title: "Privacy",
-    navigationDestination: "Favourites",
+    navigationDestination: "PrivacyPolicy",
   },
   {
     title: "Terms of use",
-    navigationDestination: "Favourites",
+    navigationDestination: "TermsOfUse",
   },
 ];
 
