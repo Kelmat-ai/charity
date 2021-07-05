@@ -1,7 +1,7 @@
 <script src="http://192.168.1.69:19002"></script>
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import {Button} from '../../../components/Button.js';
 import Header from '../../../components/Header.js';
 import { GoBack } from '../../../components/Menu.js';
@@ -26,7 +26,9 @@ export default function ContactUs(props) {
     style={styles.textInput}
     multiline={true}
     />
-    <Button btnText="Send"/>
+    <Button 
+    onPress= {() =>{Linking.openURL('mailto:kelmatventures@gmail.com') }}
+    btnText="Send"/>
 </View>
 </ScrollView>
   );
