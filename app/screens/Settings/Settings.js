@@ -13,7 +13,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
-  SectionList
+  SectionList,
+  Linking
 } from "react-native";
 import Constants from "expo-constants";
 import { Menu } from '../../components/Menu.js';
@@ -30,7 +31,8 @@ const RowOptions = [
   },
   {
     title: "Contact us",
-    navigationDestination: "ContactUs",
+    navigationDestination: "Settings",
+    titli: '123',
   },
   {
     title: "Privacy",
@@ -54,7 +56,12 @@ return(
           // onPress={item.onPress} 
           // onPress={() => navigation.navigate("Favourites")}
           // title={item.title} />
-          <TouchableOpacity  key={index} style={styles.container} onPress={() => navigation.navigate(item.navigationDestination)}>
+          <TouchableOpacity  key={index} style={styles.container} onPress={() => {navigation.navigate(item.navigationDestination)
+            {if (item.title=="Contact us"){
+              Linking.openURL('mailto:kelmatventures@gmail.com')}
+          }}
+        }
+        >
           <Text style={styles.settingsItem}>{item.title}</Text>
           <Ionicons name={"ios-arrow-forward"} size={20} color={colors.secondary} />
         </TouchableOpacity>
