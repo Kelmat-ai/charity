@@ -21,6 +21,67 @@ exports.signup = (req, res) => {
       );
 };
 
+exports.changepassword = (req, res) => {
+
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({ message: "User Not found." });
+      }
+
+      var passwordIsValid = bcrypt.compareSync(
+        req.body.newPassword,
+        user.password
+      );
+
+      if (passwordIsValid) {
+        return res.status(401).send({
+          accessToken: null,
+          message: "Same Password!"
+        });
+      }
+
+      if (!passwordIsValid) {
+      user.update({
+        password: bcrypt.hashSync(req.body.newPassword, 8)
+      })
+        return res.status(200).send({
+          accessToken: null,
+          message: "Password changed successfully!"
+        });
+      }
+
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message });
+    });
+};
+
+  // User.findOne({
+  //   where: {
+  //     username: req.body.username
+  //   }
+  // })
+  // .then(()=>{
+  //   res.status(200).send({message: '123'})}
+  // );
+    // .then(user => {
+    //   user.update({
+    //     password: bcrypt.hashSync(req.body.password, 8)
+    //   }).catch(err => {
+    //     res.status(500).send({ message: err.message });
+    //   }).then(
+    //       res.send({ message: "Details changed successfully!" })
+    //     );
+    //   })    .then(user => {
+    //       return res.status(4300).send({ message: "User Not found." });
+    //     })
+    // };
+
 exports.signin = (req, res) => {
   User.findOne({
     where: {

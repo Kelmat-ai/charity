@@ -18,5 +18,13 @@ module.exports = function(app) {
     controller.signup
   );
 
+  app.put(
+    "/api/auth/changepassword",
+    // [
+    //   verifyRegistration.checkDuplicateUsernameOrEmail
+    // ],
+    controller.changepassword
+  );
+
   app.post("/api/auth/signin", controller.signin);
 };
