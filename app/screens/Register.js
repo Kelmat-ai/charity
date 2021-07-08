@@ -7,12 +7,18 @@ import Header from '../components/Header.js';
 import colors from '../config/colors.js';
 import axios from 'axios';
 import * as Analytics from 'expo-firebase-analytics';
+import { Snackbar } from 'react-native-paper';
 
 function Register(props) {
 Analytics.setCurrentScreen('Register');
 const [username, setUsername] = useState()
 const [email, setEmail] = useState()
 const [password, setPassword] = useState()
+const [visible, setVisible] = React.useState(false);
+
+const onToggleSnackBar = () => setVisible(!visible);
+
+const onDismissSnackBar = () => setVisible(false);
 
 function createUser() {
 axios.post('http://192.168.1.69:3000/api/auth/signup', {
@@ -27,6 +33,7 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
   console.log(response);
 }, (error) => {
   console.log(error);
+  onToggleSnackBar();
 }
 )}
 
@@ -68,6 +75,23 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
    <Text style = {styles.btnText}>Register now</Text>
 </TouchableOpacity >
 </View>
+
+<View style={styles.container}>
+      <Snackbar
+        visible={visible}
+        duration = {2500}
+        onDismiss={onDismissSnackBar}
+        action={{
+          label: 'OK',
+          onPress: () => {
+            onDismissSnackBar
+          },
+        }}
+        >
+        Unknown error
+      </Snackbar>
+    </View>
+
 </ScrollView>
   );
 }

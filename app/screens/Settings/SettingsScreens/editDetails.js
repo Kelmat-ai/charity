@@ -10,6 +10,7 @@ import * as Analytics from 'expo-firebase-analytics';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import { Snackbar } from 'react-native-paper';
 
 
 export default function EditDetails() {
@@ -17,6 +18,11 @@ export default function EditDetails() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [newPassword, setNewPassword] = useState();
+  const [visible, setVisible] = React.useState(false);
+
+const onToggleSnackBar = () => setVisible(!visible);
+
+const onDismissSnackBar = () => setVisible(false);
 
   useEffect(() => {
     checkUserDetails();
@@ -50,6 +56,8 @@ export default function EditDetails() {
       console.log(response);
     }, (error) => {
       console.log(error.response);
+      if (error.response.status=='401') {
+      onToggleSnackBar();}
     }
     )
   }
@@ -93,6 +101,22 @@ export default function EditDetails() {
    </Text>
 </TouchableOpacity >
 </View>
+
+<View style={styles.container}>
+      <Snackbar
+        visible={visible}
+        duration = {2500}
+        onDismiss={onDismissSnackBar}
+        action={{
+          label: 'OK',
+          onPress: () => {
+            onDismissSnackBar
+          },
+        }}
+        >
+       Your new and old passwords must be different 
+            </Snackbar>
+    </View>
 
 </ScrollView>
   );

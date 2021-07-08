@@ -61,27 +61,6 @@ exports.changepassword = (req, res) => {
     });
 };
 
-  // User.findOne({
-  //   where: {
-  //     username: req.body.username
-  //   }
-  // })
-  // .then(()=>{
-  //   res.status(200).send({message: '123'})}
-  // );
-    // .then(user => {
-    //   user.update({
-    //     password: bcrypt.hashSync(req.body.password, 8)
-    //   }).catch(err => {
-    //     res.status(500).send({ message: err.message });
-    //   }).then(
-    //       res.send({ message: "Details changed successfully!" })
-    //     );
-    //   })    .then(user => {
-    //       return res.status(4300).send({ message: "User Not found." });
-    //     })
-    // };
-
 exports.signin = (req, res) => {
   User.findOne({
     where: {

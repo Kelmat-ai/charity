@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
 import * as Analytics from 'expo-firebase-analytics';
+import { Snackbar } from 'react-native-paper';
 
 export default function Login() {
   Analytics.setCurrentScreen('Login');
@@ -16,6 +17,12 @@ export default function Login() {
   // const [email, setEmail] = useState()
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+
+  const [visible, setVisible] = React.useState(false);
+
+  const onToggleSnackBar = () => setVisible(!visible);
+
+  const onDismissSnackBar = () => setVisible(false);
 
   useEffect(() => {
     checkUserStatus();
@@ -36,6 +43,7 @@ export default function Login() {
   }
 
   function signIn() {
+
     axios.post('http://192.168.1.69:3000/api/auth/signin', {
       username: username,
       password: password,
@@ -48,7 +56,8 @@ export default function Login() {
         navigation.navigate("Home");
       }
     }, (error) => {
-      console.log('wutang' + error);
+      console.log(error);
+      onToggleSnackBar();
     })
   }
 
@@ -83,7 +92,26 @@ export default function Login() {
         >
           <Text style={styles.btnText}>Sign in</Text>
         </TouchableOpacity >
+
       </View>
+
+
+      <View style={styles.container}>
+      <Snackbar
+        visible={visible}
+        duration = {2500}
+        onDismiss={onDismissSnackBar}
+        action={{
+          label: 'OK',
+          onPress: () => {
+            onDismissSnackBar
+          },
+        }}
+        >
+        Unknown login information
+      </Snackbar>
+    </View>
+
     </ScrollView>
   );
 }

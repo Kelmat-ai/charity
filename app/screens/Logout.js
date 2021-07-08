@@ -32,7 +32,9 @@ const navigation = useNavigation();
   removeCredentials();
 
   return null;
-}
+
+  }
+
     // function CustomDrawerContent(props) {
     //     return (
     //       <DrawerContentScrollView {...props}>
