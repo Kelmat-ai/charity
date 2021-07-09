@@ -23,7 +23,7 @@ function CategoryCard(props) {
   return(
     <View style = {styles.CategoryImgContainer}>
     <TouchableOpacity  onPress={() => {
-      navigation.navigate("ProfileListing", {charAffiliation: props.charAffiliation})
+      navigation.navigate("Results", {charAffiliation: props.charAffiliation})
       Analytics.logEvent('CategoryDetails', {charAffiliation: props.charAffiliation})
     }}>
     <Image  source={props.CategoryImgLink} style = {styles.CategoryImg}/>

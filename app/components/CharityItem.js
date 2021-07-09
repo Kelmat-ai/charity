@@ -39,7 +39,7 @@ function CharityItem(props) {
 
     return (
 
-        <Card style={styles.CardContainer} onPress={() => navigation.navigate("Profile", {props})} >
+        <Card style={styles.CardContainer} onPress={() => navigation.navigate("Charity Profile", {props})} >
             <View style={styles.container}>
     <View style={styles.ImageContainer}>
       <Card.Cover  style={styles.CardImage} source={{ uri: 'https://picsum.photos/700' }} />

@@ -24,6 +24,7 @@ import Login from './app/screens/Login';
 import Logout from './app/screens/Logout';
 import HomeScreen from './app/screens/Home';
 import Button from './app/components/Button';
+// import { Button } from 'react-native-paper';
 import TouchableOpacity from 'react-native';
 import ProfileListingScreen from './app/screens/ProfileListing';
 import {Provider} from 'react-redux';
@@ -31,25 +32,89 @@ import Store from './app/redux/store';
 import * as SecureStore from 'expo-secure-store';
 import * as Analytics from 'expo-firebase-analytics';
 import { useEffect } from 'react';
+import { HeaderBackButton } from '@react-navigation/stack'
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 function HomeStack () {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator  initialRouteName="Home">
-      <Stack.Screen name = "Home" component={HomeScreen}/>
+      <Stack.Screen name = "Home" component={HomeScreen}
+                          options={{
+                            headerBackImage: () => <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
+                            headerLeft: (props) => (
+                              <HeaderBackButton
+                                {...props}
+                              />
+                            ),
+                          }}
+      />
       <Stack.Screen name = "Favourites" component={Favourites}/>
-      <Stack.Screen name = "Settings" component={SettingsScreen}/>
-      <Stack.Screen name="Search" component={Search}/>
-      <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="ProfileListing" component={ProfileListingScreen} />
-      <Stack.Screen name="ContactUs" component={ContactUs} />
-      <Stack.Screen name="EditDetails" component={EditDetails} />
-      <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
-      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Stack.Screen name = "Settings" component={SettingsScreen}
+                          options={{
+                            headerBackImage: () => <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
+                            headerLeft: (props) => (
+                              <HeaderBackButton
+                                {...props}
+                              />
+                            ),
+                          }}
+      />
+      <Stack.Screen name="Search" component={Search}
+                          options={{
+                            headerBackImage: () => <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
+                            headerLeft: (props) => (
+                              <HeaderBackButton
+                                {...props}
+                              />
+                            ),
+                          }}
+      />
+      <Stack.Screen name="Charity Profile" component={Profile} />
+      <Stack.Screen name="Results" component={ProfileListingScreen} />
+      <Stack.Screen name="Contact Us" component={ContactUs} />
+      <Stack.Screen name="Change Your Password" component={EditDetails} 
+                    options={{
+                      headerLeft: (props) => (
+                        <HeaderBackButton
+                          {...props}
+                          onPress={() => {
+                            navigation.goBack();
+                          }}
+                        />
+                      ),
+                    }}
+      />
+      <Stack.Screen name="Terms Of Use" component={TermsOfUse} 
+                          options={{
+                            headerLeft: (props) => (
+                              <HeaderBackButton
+                                {...props}
+                                onPress={() => {
+                                  navigation.goBack();
+                                }}
+                              />
+                            ),
+                          }}
+      />
+      <Stack.Screen name="Privacy Policy" component={PrivacyPolicy}
+                          options={{
+                            headerLeft: (props) => (
+                              <HeaderBackButton
+                                {...props}
+                                onPress={() => {
+                                  navigation.goBack();
+                                }}
+                              />
+                            ),
+                          }}
+      />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Login" component={Login} options={{title: "ליאור"}}/>
+      <Stack.Screen name="Login" component={Login}/>
       <Stack.Screen name="Logout" component={Logout} />
       <Stack.Screen name="Notifications" component={Notifications}/>
     </Stack.Navigator>
@@ -60,8 +125,12 @@ function HomeStack () {
     return(
     <Drawer.Navigator  initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeStack} />
-      <Drawer.Screen name="Settings" component={SettingsScreen} />
-      <Drawer.Screen name="Search" component={Search} />
+      <Drawer.Screen name="Settings" component={SettingsScreen} 
+          options={{headerShown: true}}
+      />
+      <Stack.Screen name="Search" component={Search}
+          options={{headerShown: true}}
+      />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login}
       // options={{

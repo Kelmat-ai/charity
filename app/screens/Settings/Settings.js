@@ -27,7 +27,7 @@ const SettingsScreen = (props) => {
 const RowOptions = [
   {
     title: "Change password",
-    navigationDestination: "EditDetails",
+    navigationDestination: "Change Your Password",
   },
   {
     title: "Contact us",
@@ -36,11 +36,11 @@ const RowOptions = [
   },
   {
     title: "Privacy",
-    navigationDestination: "PrivacyPolicy",
+    navigationDestination: "Privacy Policy",
   },
   {
     title: "Terms of use",
-    navigationDestination: "TermsOfUse",
+    navigationDestination: "Terms Of Use",
   },
 ];
 
