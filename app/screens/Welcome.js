@@ -11,7 +11,7 @@ Analytics.setCurrentScreen('Welcome');
     return (
 <View style={styles.container}>
     <View  style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../assets/logo-red.png')}/>
+        <Image style={styles.logo} source={require('../assets/Logo_red.png')}/>
     </View>
     
     <View style = {styles.Registercontainer}>
@@ -35,7 +35,7 @@ Analytics.setCurrentScreen('Welcome');
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.secondary
+        backgroundColor: colors.primary
     },
     logoContainer: {
         alignSelf: 'stretch',
@@ -43,15 +43,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     logo: {
-        width: 100,
-        height: 100,
+        width: 350,
+        height: 350,
         position: 'absolute',
-        marginTop: 400,
+        marginTop: 175,
     },
     RegisterBtn: {
         alignSelf: 'stretch',
         alignItems: 'center',
-        backgroundColor: colors.primary,
+        backgroundColor: colors.secondary,
         paddingTop:15,
         paddingBottom:15,
         borderRadius:15,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     LoginBtn: {
         alignSelf: 'stretch',
         alignItems: 'center',
-        backgroundColor: colors.primary,
+        backgroundColor: colors.secondary,
         paddingTop:15,
         paddingBottom:15,
         borderRadius:15,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     btnText: {
-        color: colors.secondary,
+        color: colors.primary,
         fontWeight: 'bold',
     },
     Registercontainer: {

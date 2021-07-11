@@ -123,7 +123,7 @@ function HomeStack () {
   
   function DrawerStack (){
     return(
-    <Drawer.Navigator  initialRouteName="Home">
+    <Drawer.Navigator  initialRouteName="Welcome">
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Settings" component={SettingsScreen} 
           options={{headerShown: true}}
@@ -138,6 +138,7 @@ function HomeStack () {
       //   }}
       />
       <Stack.Screen name="Logout" component={Logout} />
+      <Stack.Screen name="Welcome" component={Welcome} />
     </Drawer.Navigator>
     );
   }
