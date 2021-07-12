@@ -13,8 +13,8 @@ app.post('/chars', async (req, res) => {
     console.error(error)
     } 
 })
-app.get('/charities/:charId', async (req, res) => {
-    const charId = req.params.charId
+app.get('/charities/charId', async (req, res) => {
+    const charId = req.query.charId
     try {
     const charitySelected = await charities.findAll({
     where: {

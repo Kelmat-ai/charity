@@ -34,6 +34,7 @@
     "prop-types": "^15.7.2",
     "psql": "0.0.1",
     "punycode": "^2.1.1",
+    "qs": "^6.10.1",
     "react": "16.13.1",
     "react-devtools-core": "^4.12.4",
     "react-dom": "16.13.1",
@@ -54,6 +55,7 @@
     "redux-thunk": "^2.3.0",
     "rm": "^0.1.8",
     "sequelize": "^6.6.2",
+    "underscore": "^1.13.1",
     "yarn": "^1.22.10"
   },
   "devDependencies": {

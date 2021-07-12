@@ -15,13 +15,32 @@ import {
   ScrollView,
   SectionList
 } from "react-native";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Analytics from 'expo-firebase-analytics';
+import _ from 'lodash';
 
 const Search = () => {
   Analytics.setCurrentScreen('Search');
   let [charities, setCharities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    initialSearch();
+  }, []);
+
+  const initialSearch = async() => {
+    min=Math.floor(1)
+    max=Math.ceil(645)
+    const charId = Array(max - min + 1).fill().map((_, idx) => min + idx)
+    const randomCharId = _.sampleSize(charId, 50);
+      const url = `http://192.168.1.69:3000/charities/charId`
+      axios.get(url, {params: {charId: randomCharId }})
+        .then((response) => {
+          setCharities(response.data.charitySelected)
+        }, (error) => {
+          console.log(error.response);
+        });
+    }
 
   const onChangeSearch = query => {
     setSearchQuery(query);
@@ -48,6 +67,7 @@ const Search = () => {
       value={searchQuery}
     />
     </View>
+    <View>
       <ScrollView>
     {
       charities.map(charity => {
@@ -57,13 +77,15 @@ const Search = () => {
         )
       })}
     </ScrollView>
+    </View>
   </View>
   );
 };
 
 const styles = StyleSheet.create({
     SearchContainer: {
-        marginTop: Constants.statusBarHeight,
+        marginTop: 1,
+        marginBottom: 42,
         flex: 1,
         alignItems: 'flex-start',
         flexDirection: 'row',
