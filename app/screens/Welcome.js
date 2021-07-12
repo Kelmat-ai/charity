@@ -5,9 +5,12 @@ import Button from '../components/Button.js';
 import colors from '../config/colors.js';
 import Constants from "expo-constants";
 import * as Analytics from 'expo-firebase-analytics';
+import { useNavigation } from '@react-navigation/native';
 
 function Welcome( {props} ) {
+const navigation = useNavigation();
 Analytics.setCurrentScreen('Welcome');
+
     return (
 <View style={styles.container}>
     <View  style={styles.logoContainer}>
@@ -17,14 +20,18 @@ Analytics.setCurrentScreen('Welcome');
     <View style = {styles.Registercontainer}>
 <TouchableOpacity
     style = {styles.RegisterBtn}
-    type="clear"> 
+    type="clear"
+    onPress={() => navigation.navigate("Create your account")}
+    > 
    <Text style = {styles.btnText}>Register</Text>
 </TouchableOpacity >
 </View>
 <View style = {styles.Registercontainer}>
 <TouchableOpacity
     style = {styles.LoginBtn}
-    type="clear"> 
+    type="clear"
+    onPress={() => navigation.navigate("Login")}
+    > 
    <Text style = {styles.btnText}>Sign in</Text>
 </TouchableOpacity >
 </View>

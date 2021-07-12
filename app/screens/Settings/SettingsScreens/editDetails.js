@@ -18,7 +18,9 @@ export default function EditDetails() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [newPassword, setNewPassword] = useState();
+  const [confirmNewPassword, setConfirmNewPassword] = useState();
   const [visible, setVisible] = React.useState(false);
+  const [snackText, setsnackText] = useState();
 
 const onToggleSnackBar = () => setVisible(!visible);
 
@@ -46,6 +48,8 @@ const onDismissSnackBar = () => setVisible(false);
     const credentials = await SecureStore.getItemAsync('userDetails');
     ParsedCredentials = JSON.parse(credentials);
     console.log(ParsedCredentials);
+
+    if ((newPassword != undefined && confirmNewPassword != undefined) && (newPassword == confirmNewPassword)) {
     axios.put('http://192.168.1.69:3000/api/auth/changepassword',
      { 
       username: ParsedCredentials.username,
@@ -57,34 +61,33 @@ const onDismissSnackBar = () => setVisible(false);
     }, (error) => {
       console.log(error.response);
       if (error.response.status=='401') {
-      onToggleSnackBar();}
+      setsnackText('Your new and old passwords must be different');
+      onToggleSnackBar()}
     }
     )
+  } else {
+    setsnackText('Passwords do not match');
+    onToggleSnackBar()
+    }
+
   }
 
   return (
-    <ScrollView>
-  <View>
-  <Header title="Your account details" />
-  <GoBack />
-  </View>
+    <ScrollView style={styles.biggestContainer}>
   <View style={styles.regform}>
-{/* <Text style={styles.inputTitle}>Name</Text>
+<Text style={styles.inputTitle}>New Password *</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
-    placeholder="Jonathan Smitherino"
+    onChangeText= {(text) => setNewPassword( text )}
+    placeholder="********"
+    secureTextEntry={true}
     style={styles.textInput}
     />
-<Text style={styles.inputTitle}>Email</Text>
+
+<Text style={styles.inputTitle}>Confirm Password *</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
-    placeholder="you@example.com"
-    style={styles.textInput}
-    /> */}
-<Text style={styles.inputTitle}>New Password</Text>
-<TextInput
-    placeholderTextColor={colors.secondary}
-    onChangeText={(text) => setNewPassword( text )}
+    onChangeText={(text) => {setConfirmNewPassword( text )} }
     placeholder="********"
     secureTextEntry={true}
     style={styles.textInput}
@@ -114,7 +117,7 @@ const onDismissSnackBar = () => setVisible(false);
           },
         }}
         >
-       Your new and old passwords must be different 
+          {snackText}
             </Snackbar>
     </View>
 
@@ -127,6 +130,10 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: 'normal',
   },
+  biggestContainer: {
+    backgroundColor: colors.primary,
+    color: colors.secondary
+},
     container: {
     flex: 1,
     justifyContent: 'center',
@@ -153,7 +160,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 30,
     paddingRight: 30,
-    paddingBottom: 60,
+    paddingBottom: 40,
+    paddingTop: 40,
   },
   textInput: {
     paddingLeft: 10,
@@ -170,10 +178,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   inputTitle: {
-    fontSize: 14,
+    fontSize: 16,
     paddingBottom: 10,
-    color: colors.secondary,
+    color: colors.tertiary,
     alignSelf: 'stretch',
+    fontWeight: 'bold',
     alignItems: 'center',
     fontWeight: 'normal',
   }

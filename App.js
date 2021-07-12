@@ -113,7 +113,7 @@ function HomeStack () {
                             ),
                           }}
       />
-      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Create your account" component={Register} />
       <Stack.Screen name="Login" component={Login}/>
       <Stack.Screen name="Logout" component={Logout} />
       <Stack.Screen name="Notifications" component={Notifications}/>
@@ -123,7 +123,7 @@ function HomeStack () {
   
   function DrawerStack (){
     return(
-    <Drawer.Navigator  initialRouteName="Welcome">
+    <Drawer.Navigator  initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Settings" component={SettingsScreen} 
           options={{headerShown: true}}
@@ -131,8 +131,11 @@ function HomeStack () {
       <Stack.Screen name="Search" component={Search}
           options={{headerShown: true}}
       />
-      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Create your account" component={Register} 
+      options={{headerShown: true}}
+      />
       <Stack.Screen name="Login" component={Login}
+      options={{headerShown: true}}
       // options={{
       //     swipeEnabled: false,
       //   }}

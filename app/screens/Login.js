@@ -14,9 +14,10 @@ import { Snackbar } from 'react-native-paper';
 export default function Login() {
   Analytics.setCurrentScreen('Login');
   const navigation = useNavigation();
-  // const [email, setEmail] = useState()
+  const [email, setEmail] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [snackText, setsnackText] = useState();
 
   const [visible, setVisible] = React.useState(false);
 
@@ -57,15 +58,13 @@ export default function Login() {
       }
     }, (error) => {
       console.log(error);
+      setsnackText('Unknown login information');
       onToggleSnackBar();
     })
   }
 
   return (
-    <ScrollView>
-      <View>
-        <Header title="Sign in" />
-      </View>
+    <ScrollView style={styles.biggestContainer}>
       <View style={styles.regform}>
         <Text style={styles.inputTitle}>Username</Text>
         <TextInput
@@ -75,7 +74,6 @@ export default function Login() {
           style={styles.textInput}
         />
         <Text style={styles.inputTitle}>Password</Text>
-        <Text>John + 1234</Text>
         <TextInput
           placeholderTextColor={colors.secondary}
           placeholder="********"
@@ -90,7 +88,7 @@ export default function Login() {
           onPress={() => { signIn() }}
           type="clear"
         >
-          <Text style={styles.btnText}>Sign in</Text>
+          <Text style={styles.btnText}>Login</Text>
         </TouchableOpacity >
 
       </View>
@@ -108,7 +106,7 @@ export default function Login() {
           },
         }}
         >
-        Unknown login information
+        {snackText}
       </Snackbar>
     </View>
 
@@ -121,10 +119,16 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: 'normal',
   },
+  biggestContainer: {
+    backgroundColor: colors.primary,
+    color: colors.secondary
+},
   container: {
     flex: 1,
     justifyContent: 'center',
     flexDirection: "row",
+    backgroundColor: colors.primary,
+    color: colors.secondary
   },
   button: {
     alignSelf: 'stretch',
@@ -147,7 +151,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 30,
     paddingRight: 30,
-    paddingBottom: 60,
+    paddingBottom: 40,
+    paddingTop: 40,
   },
   textInput: {
     paddingLeft: 10,
@@ -164,10 +169,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   inputTitle: {
-    fontSize: 14,
+    fontSize: 16,
     paddingBottom: 10,
-    color: colors.secondary,
+    color: colors.tertiary,
     alignSelf: 'stretch',
+    fontWeight: 'bold',
     alignItems: 'center',
     fontWeight: 'normal',
   }

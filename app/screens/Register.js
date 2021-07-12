@@ -14,7 +14,8 @@ Analytics.setCurrentScreen('Register');
 const [username, setUsername] = useState()
 const [email, setEmail] = useState()
 const [password, setPassword] = useState()
-const [visible, setVisible] = React.useState(false);
+const [visible, setVisible] = useState(false);
+const [snackText, setsnackText] = useState();
 
 const onToggleSnackBar = () => setVisible(!visible);
 
@@ -33,31 +34,36 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
   console.log(response);
 }, (error) => {
   console.log(error);
+  setsnackText('An error has occurred. Please try again later');
   onToggleSnackBar();
 }
 )}
 
+function fieldValidation() {
+ if (username == undefined || email == undefined || password == undefined) {
+  setsnackText('All fields are required');
+  onToggleSnackBar();
+ } 
+}
+
   return (
-    <ScrollView>
-  <View>
-  <Header title="Create your account" />
-  </View>
+    <ScrollView style={styles.biggestContainer}>
   <View style={styles.regform}>
-<Text style={styles.inputTitle}>Username</Text>
+<Text style={styles.inputTitle}>Username *</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
     onChangeText={(text) => setUsername( text )}
     placeholder="Jonathan Smitherino"
     style={styles.textInput}
     />
-<Text style={styles.inputTitle}>Email</Text>
+<Text style={styles.inputTitle}>Email *</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
     onChangeText={(text) => setEmail( text )}
     placeholder="you@example.com"
     style={styles.textInput}
     />
-<Text style={styles.inputTitle}>Password</Text>
+<Text style={styles.inputTitle}>Password *</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
     onChangeText={(text) => setPassword( text )}
@@ -66,11 +72,10 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
     style={styles.textInput}
     />
 </View>
-
 <View style = {styles.container}>
 <TouchableOpacity
     style = {styles.button}
-    onPress= {() =>{createUser()}}
+    onPress= {() =>{ fieldValidation()}}
     type="clear"> 
    <Text style = {styles.btnText}>Register now</Text>
 </TouchableOpacity >
@@ -88,7 +93,7 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
           },
         }}
         >
-        Unknown error
+        {snackText}
       </Snackbar>
     </View>
 
@@ -101,6 +106,10 @@ const styles = StyleSheet.create({
         color: colors.primary,
         fontWeight: 'normal',
     },
+    biggestContainer: {
+      backgroundColor: colors.primary,
+      color: colors.secondary
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -127,7 +136,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 30,
     paddingRight: 30,
-    paddingBottom: 60,
+    paddingBottom: 40,
+    paddingTop: 40,
   },
   textInput: {
     paddingLeft: 10,
@@ -144,10 +154,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   inputTitle: {
-    fontSize: 14,
+    fontSize: 16,
     paddingBottom: 10,
-    color: colors.secondary,
+    color: colors.tertiary,
     alignSelf: 'stretch',
+    fontWeight: 'bold',
     alignItems: 'center',
     fontWeight: 'normal',
   }
