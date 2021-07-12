@@ -30,13 +30,10 @@ function ProfileListingScreen(props) {
     axios.get(url)
       .then((response) => {
         setCharities(response.data.charitySelected)
-        // console.log('123')
-        // console.log(Object.keys(charities.charitySelected).length)
       }, (error) => {
         console.log(error);
       });
   }, [])
-
 
   return (
     <ScrollView>

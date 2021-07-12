@@ -123,7 +123,7 @@ function HomeStack () {
   
   function DrawerStack (){
     return(
-    <Drawer.Navigator  initialRouteName="Search">
+    <Drawer.Navigator  initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Settings" component={SettingsScreen} 
           options={{headerShown: true}}

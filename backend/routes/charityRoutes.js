@@ -28,8 +28,6 @@ app.get('/charities/charId', async (req, res) => {
 
 app.get('/listing/:charAffiliation', async (req, res) => {
     const charAffiliation = req.params.charAffiliation
-    // const db = require("../models")
-    console.log('23')
     console.log(charAffiliation)
     try {
     const charitySelected = await charities.findAll({

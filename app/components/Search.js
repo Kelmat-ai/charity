@@ -21,7 +21,7 @@ import _ from 'lodash';
 
 const Search = () => {
   Analytics.setCurrentScreen('Search');
-  let [charities, setCharities] = useState([]);
+  const [charities, setCharities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
