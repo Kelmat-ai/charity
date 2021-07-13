@@ -45,11 +45,7 @@ const RowOptions = [
 ];
 
 return(
-  <ScrollView>
-    <View>
-        <Header title="Settings"/>
-        <Menu />
-        </View>
+  <ScrollView  style={styles.biggestContainer}>
         {RowOptions.map((item, index) => {
         return (
           // <SettingsRow key={index}
@@ -73,6 +69,11 @@ return(
 };
 
 const styles = StyleSheet.create({
+    biggestContainer: {
+      backgroundColor: colors.primary,
+      color: colors.secondary,
+      paddingTop: 40-16
+  },
   container: {
     alignSelf: 'stretch',
     flex: 1,
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
   },
   settingsItem: {
     fontSize: 18,
+    color: colors.tertiary
   }
 });
 

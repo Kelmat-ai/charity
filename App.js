@@ -3,9 +3,14 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, drawerContent } from '@react-navigation/drawer';
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem
+} from '@react-navigation/drawer';
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
 import Welcome from './app/screens/Welcome';
 import SettingsScreen from './app/screens/Settings/Settings';
 import Header from './app/components/Header';
@@ -23,6 +28,7 @@ import Register from './app/screens/Register';
 import Login from './app/screens/Login';
 import Logout from './app/screens/Logout';
 import HomeScreen from './app/screens/Home';
+import colors from './app/config/colors.js';
 import Button from './app/components/Button';
 // import { Button } from 'react-native-paper';
 import TouchableOpacity from 'react-native';
@@ -121,15 +127,65 @@ function HomeStack () {
     );
     }
   
+    function CustomDrawerContent(props, {navigation}) {
+      return (
+        <SafeAreaView  style={styles.container}>
+          <View   style={styles.logoContainer}>
+        <Image style={styles.drawerLogo} source={require('./app/assets/Logo_red2.png')}/>
+        </View>
+        <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+      </DrawerContentScrollView>
+        </SafeAreaView>
+      )
+    }
+
   function DrawerStack (){
     return(
-    <Drawer.Navigator  initialRouteName="Home">
-      <Drawer.Screen name="Home" component={HomeStack} />
-      <Drawer.Screen name="Settings" component={SettingsScreen} 
-          options={{headerShown: true}}
-      />
+    <Drawer.Navigator  initialRouteName="Home" drawerStyle={styles.drawerNavigator}
+    drawerContentOptions={{
+      activeTintColor: colors.primary,
+      activeBackgroundColor: colors.fourth
+    }}
+    drawerContent={(props) => <CustomDrawerContent {...props}/>}
+    >
+      <Drawer.Screen name="Home" component={HomeStack} 
+           options={{drawerIcon: ({focused, size}) => (
+              <Ionicons
+                 name="md-home"
+                 size={23}
+                 color={focused ? colors.primary : colors.tertiary}
+              />)
+            }}
+            />
       <Stack.Screen name="Search" component={Search}
-          options={{headerShown: true}}
+     options={{headerShown: true,
+      drawerIcon: ({focused, size}) => (
+        <Ionicons
+           name="md-search"
+           size={23}
+           color={focused ? colors.primary : colors.tertiary}
+        />),
+      }}
+      />
+      <Drawer.Screen name="Settings" component={SettingsScreen} 
+     options={{headerShown: true,
+      drawerIcon: ({focused, size}) => (
+        <Ionicons
+           name="md-settings"
+           size={23}
+           color={focused ? colors.primary : colors.tertiary}
+        />),
+      }}
+      />
+      <Stack.Screen name="Logout" component={Logout} 
+            options={{drawerIcon: ({focused, size}) => (
+                <Ionicons
+                   name="md-log-out"
+                   size={23}
+                   color={focused ? colors.primary : colors.tertiary}
+                />),
+              }}
       />
       <Stack.Screen name="Create your account" component={Register} 
       options={{headerShown: true}}
@@ -140,7 +196,6 @@ function HomeStack () {
       //     swipeEnabled: false,
       //   }}
       />
-      <Stack.Screen name="Logout" component={Logout} />
       <Stack.Screen name="Welcome" component={Welcome} />
     </Drawer.Navigator>
     );
@@ -162,6 +217,19 @@ function HomeStack () {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
   },
+  drawerNavigator: {
+    justifyContent: 'center',
+    backgroundColor: colors.primary,
+  },
+  drawerLogo: {
+    marginTop: 45,
+    marginBottom: -30,
+    width: '80%',
+    height: '80%',
+    height: 70,
+  },
+  logoContainer: {
+    alignItems: "center",
+},
 });
