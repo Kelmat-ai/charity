@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-paper';
+import { Title } from 'react-native-paper';
 import {
   StyleSheet,
   Text,
@@ -27,6 +28,7 @@ function CategoryCard(props) {
       Analytics.logEvent('CategoryDetails', {charAffiliation: props.charAffiliation})
     }}>
     <Image  source={props.CategoryImgLink} style = {styles.CategoryImg}/>
+    <Text  style={styles.TextItem}>{props.subtitleText}</Text>
     </TouchableOpacity>
     </View>
   );
@@ -34,15 +36,23 @@ function CategoryCard(props) {
 
 const styles = StyleSheet.create({
   CategoryImg: {
+    resizeMode: "center",
     width: '100%',
     height: '100%',
-    height: 160,
-    width: 160,
+    height: 200,
+    width: 200,
+    borderTopRightRadius: 200,
+    marginBottom: -10
 },
   CategoryImgContainer: {
   alignItems: 'center',
   width: '50%',
   marginVertical: 5,
+  marginBottom: 25
+},
+  TextItem: {
+    fontSize: 16,
+    textAlign: 'center',
 },
 });
 

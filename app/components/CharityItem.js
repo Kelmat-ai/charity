@@ -23,34 +23,32 @@ export const CardDetailLocation = (props) => (
     />
   );
   
-  // export const CardDetailTax = () => (
-  //   <List.Item
-  //     style={styles.CardCharityDetails}
-  //     description="40%"
-  //     title="40%"
-  //     titleStyle={{fontSize: 16}}
-  //     descriptionStyle={{fontSize: 16}}
-  //     left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
-  //   />
-  // );
+  export const CardDetailAffiliation = (props) => (
+    <List.Item
+      style={styles.CardCharityDetails}
+      descriptionStyle={{fontSize: 16}}
+      titleStyle={{fontSize: 16}}
+      title={props.affiliation}
+      descriptionNumberOfLines={1}
+      left={props => <List.Icon {...props} style={{marginLeft: -10,marginRight: -10}} color= {colors.secondary}  icon={"passport-biometric"}/>}
+    />
+  );
 
 function CharityItem(props) {
   const navigation = useNavigation();
-
+  console.log(props)
     return (
 
         <Card style={styles.CardContainer} onPress={() => navigation.navigate("Charity Profile", {props})} >
             <View style={styles.container}>
-    <View style={styles.ImageContainer}>
-      <Card.Cover  style={styles.CardImage} source={{ uri: 'https://picsum.photos/700' }} />
-      </View>
       <View style={styles.ContentContainer}>
-      <Card.Content style={styles.CardContent}>
+      <Card.Content>
           <View  style={styles.CardContentTitle}>
             <Title color= {colors.secondary}>{props.charity_name}</Title>
+            </View>
             <View style={styles.CardContentDetails}>
             <CardDetailLocation city={props.city} />
-            </View>
+            <CardDetailAffiliation affiliation={props.affiliation} />
             </View>
     </Card.Content>
     </View>
@@ -69,31 +67,30 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'row',
     },
-    CardImage: {
+    ContentContainer: {
         height: 150,
         width: '100%',
-      },
-      ImageContainer: {
-        flex: 0.7,
-    },
-    CardContent: {
-      height: 150,
-      width: '100%',
-    },
-    ContentContainer: {
         flex: 1,
     },
     CardContentTitle: {
-        alignItems: 'center',
+        width: '100%',
+        height: '60%',
         marginTop: 15,
     },
     CardContentDetails: {
-        alignSelf: 'stretch',
+        width: '100%',
+        height: '40%',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     },
     CardCharityDetails: {
-        width: '100%',
-        marginTop: -10,
-        marginLeft: -20,
+        width: '50%',
+        justifyContent: 'flex-start',
+        // marginTop: -10,
+        // marginLeft: -20,
     },
   });
 

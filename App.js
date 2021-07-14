@@ -41,6 +41,7 @@ import { useEffect } from 'react';
 import { HeaderBackButton } from '@react-navigation/stack'
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from "@expo/vector-icons";
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -51,7 +52,7 @@ function HomeStack () {
     <Stack.Navigator  initialRouteName="Home">
       <Stack.Screen name = "Home" component={HomeScreen}
                           options={{
-                            headerBackImage: () => <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
+                            headerBackImage: () => <Ionicons name={"md-menu"} style={styles.icons} size={30} onPress={() => navigation.toggleDrawer()}/>,
                             headerLeft: (props) => (
                               <HeaderBackButton
                                 {...props}
@@ -62,7 +63,7 @@ function HomeStack () {
       <Stack.Screen name = "Favourites" component={Favourites}/>
       <Stack.Screen name = "Settings" component={SettingsScreen}
                           options={{
-                            headerBackImage: () => <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
+                            headerBackImage: () => <Ionicons name={"md-menu"} style={styles.icons} size={30} onPress={() => navigation.toggleDrawer()}/>,
                             headerLeft: (props) => (
                               <HeaderBackButton
                                 {...props}
@@ -72,7 +73,7 @@ function HomeStack () {
       />
       <Stack.Screen name="Search" component={Search}
                           options={{
-                            headerBackImage: () => <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
+                            headerBackImage: () => <Ionicons name={"md-menu"}  style={styles.icons} size={30} onPress={() => navigation.toggleDrawer()}/>,
                             headerLeft: (props) => (
                               <HeaderBackButton
                                 {...props}
@@ -88,6 +89,7 @@ function HomeStack () {
                       headerLeft: (props) => (
                         <HeaderBackButton
                           {...props}
+                          color={colors.secondary}
                           onPress={() => {
                             navigation.goBack();
                           }}
@@ -232,4 +234,7 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: "center",
 },
+  icons: {
+    color: colors.secondary
+}
 });

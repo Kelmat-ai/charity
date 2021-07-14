@@ -48,26 +48,25 @@ function HomeScreen ( {navigation}) {
   }
 
 return(
-  <ScrollView>
-        <View>
-        <Header title="Home"/>
-        </View>
-        <View style={styles.HomeContainer}>
+  <ScrollView  style={styles.biggestContainer}>
   <View  style={styles.CategoryTitleContainer}>
-    <Title>Area of impact</Title>
-    <Text>Choose one below to see associated NGO's</Text>
+    <Title>Who do you want to help today?</Title>
+    <Text style={styles.TextItem}>Choose a category below and find the right charity partnerships for your business.</Text>
   </View>
   <View style={styles.DividerContainer}>
       <Divider style={styles.Divider} />
     </View>
   <View>
     <View   style={styles.CategoryCardContainer}>
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/1.png')} charAffiliation = "ONGA" />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/2.png')} charAffiliation = "ONGD"   />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/3.png')} charAffiliation = "ONGM"   />
-      <CategoryCard CategoryImgLink={require('../assets/SDG_IconsB/4.png')} charAffiliation = "ONGPD"   />
+      <CategoryCard CategoryImgLink={require('../assets/menuvectors/undraw_nature_m5ll.png')}
+       charAffiliation = "ONGA" subtitleText="Environmental action"   />
+      <CategoryCard  CategoryImgLink={require('../assets/menuvectors/undraw_building_blocks_n0nc.png')}
+      charAffiliation = "ONGD" subtitleText="Development aid"  />
+      <CategoryCard CategoryImgLink={require('../assets/menuvectors/undraw_women_day_2m89.png')}
+      charAffiliation = "ONGM" subtitleText="Human rights"  />
+      <CategoryCard CategoryImgLink={require('../assets/menuvectors/undraw_fatherhood_7i19.png')}
+      charAffiliation = "ONGPD" subtitleText="Social welfare"  />
     </View>
-  </View>
   </View>
   </ScrollView>
   
@@ -75,6 +74,10 @@ return(
 };
 
 const styles = StyleSheet.create({
+  biggestContainer: {
+    backgroundColor: colors.primary,
+    color: colors.secondary
+},
   CategoryCardContainer: {
       flex: 1,
       flexDirection: 'row',
@@ -85,12 +88,24 @@ const styles = StyleSheet.create({
       marginBottom: 20,
   },
   CategoryTitleContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 20,
     marginBottom: 10,
     marginHorizontal: 20,
 },
+  TextItem: {
+    marginTop: 10,
+    fontSize: 16,
+    marginBottom: 10,
+    textAlign: 'center',
+},
   DividerContainer: {
     marginHorizontal: 15,
-    marginBottom: 20,
+    marginBottom: 25,
 },
 Divider: {
 height: 1.5,
