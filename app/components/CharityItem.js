@@ -15,28 +15,28 @@ export const CardDetailLocation = (props) => (
     <List.Item
       style={styles.CardCharityDetails}
       descriptionStyle={{fontSize: 16}}
-      titleStyle={{fontSize: 16}}
+      titleStyle={{fontSize: 14.5}}
       // description={props.city}
       title={props.city}
       descriptionNumberOfLines={1}
-      left={props => <List.Icon {...props} style={{marginLeft: -10,marginRight: -10}} color= {colors.secondary}  icon={"map-marker"} />}
+      left={props => <List.Icon {...props} style={{width: '50%',marginLeft: -20,marginRight: -30}} color= {colors.secondary}  icon={"map-marker"} />}
     />
   );
   
   export const CardDetailAffiliation = (props) => (
     <List.Item
       style={styles.CardCharityDetails}
-      descriptionStyle={{fontSize: 16}}
-      titleStyle={{fontSize: 16}}
+      descriptionStyle={{fontSize: 15}}
+      titleStyle={{fontSize: 14.5}}
       title={props.affiliation}
       descriptionNumberOfLines={1}
-      left={props => <List.Icon {...props} style={{marginLeft: -10,marginRight: -10}} color= {colors.secondary}  icon={"passport-biometric"}/>}
+      left={props => <List.Icon {...props} style={{width: '50%', marginLeft: -40,marginRight: -30}} color= {colors.secondary}  icon={"passport-biometric"}/>}
     />
   );
 
 function CharityItem(props) {
   const navigation = useNavigation();
-  console.log(props)
+
     return (
 
         <Card style={styles.CardContainer} onPress={() => navigation.navigate("Charity Profile", {props})} >
@@ -44,11 +44,33 @@ function CharityItem(props) {
       <View style={styles.ContentContainer}>
       <Card.Content>
           <View  style={styles.CardContentTitle}>
-            <Title color= {colors.secondary}>{props.charity_name}</Title>
+            <Title  style={styles.Title}>{props.charity_name}</Title>
             </View>
             <View style={styles.CardContentDetails}>
-            <CardDetailLocation city={props.city} />
-            <CardDetailAffiliation affiliation={props.affiliation} />
+            {(props.affiliation == 'ONGA') &&
+            <CardDetailAffiliation 
+             affiliation='Environmental action'
+            />
+            }
+            {(props.affiliation == 'ONGD') &&
+            <CardDetailAffiliation 
+             affiliation='Development aid'
+            />
+            }
+            {(props.affiliation == 'ONGPD') &&
+            <CardDetailAffiliation 
+             affiliation='Social welfare'
+            />
+            }
+            {(props.affiliation == 'ONGM') &&
+            <CardDetailAffiliation 
+             affiliation='Human rights'
+            />
+            }
+            {(props.city != null)
+            &&
+            <CardDetailLocation city={`${props.city.slice(0,1).toUpperCase()}${props.city.slice(1).toLowerCase()}`} />
+            }
             </View>
     </Card.Content>
     </View>
@@ -75,6 +97,7 @@ const styles = StyleSheet.create({
     CardContentTitle: {
         width: '100%',
         height: '60%',
+        overflow: 'hidden',
         marginTop: 15,
     },
     CardContentDetails: {
@@ -89,9 +112,11 @@ const styles = StyleSheet.create({
     CardCharityDetails: {
         width: '50%',
         justifyContent: 'flex-start',
-        // marginTop: -10,
-        // marginLeft: -20,
     },
+    Title: {
+      fontSize: 18,
+      // textAlign: 'center',
+  }
   });
 
 export default CharityItem;
