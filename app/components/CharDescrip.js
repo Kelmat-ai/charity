@@ -14,7 +14,7 @@ export const DetailLocation = (props) => (
     style={styles.CharityDetails}
     title={props.city}
     description={props.address}
-    left={props => <List.Icon {...props}   color= {colors.secondary}  icon={"map-marker"} />}
+    left={props => <List.Icon {...props}  color= {colors.secondary}  icon={"map-marker"} />}
   />
 );
 
@@ -40,7 +40,7 @@ export const DetailFieldofWork = (props) => (
   <List.Item
     style={styles.CharityDetails}
     title={props.affiliation}
-    description="Social"
+    // description="Social"
     left={props => <List.Icon {...props}  color= {colors.secondary}  icon={"passport-biometric"}/>}
   />
 );
@@ -48,7 +48,9 @@ export const DetailFieldofWork = (props) => (
 function CharDescrip(props) {
     return (
     <ScrollView>
+      <View  style={styles.CharityNameContainer}>
         <Text style={styles.CharityName}>{props.route.params.props.charity_name}</Text>
+        </View>
         {props.route.params.props.website != null &&
           <View style={styles.ButtonContainer}>
           <ButtonWebsite btnText="Know more" website={props.route.params.props.website}/>
@@ -61,27 +63,48 @@ function CharDescrip(props) {
             <View style={styles.CharityDetailsContainer}>
             {(props.route.params.props.city != null || props.route.params.props.address != null)
             &&
-            <DetailLocation city ={props.route.params.props.city} address={props.route.params.props.address}/>
+            <DetailLocation city ={`${props.route.params.props.city.slice(0,1).toUpperCase()}${props.route.params.props.city.slice(1).toLowerCase()}`} address={props.route.params.props.address}/>
             }
-            <DetailFieldofWork affiliation={props.route.params.props.affiliation}/>
+
+            {(props.route.params.props.affiliation == 'ONGA') &&
+            <DetailFieldofWork
+             affiliation='Environmental action'
+            />
+            }
+            {(props.route.params.props.affiliation == 'ONGD') &&
+            <DetailFieldofWork
+             affiliation='Development aid'
+            />
+            }
+            {(props.route.params.props.affiliation == 'ONGPD') &&
+            <DetailFieldofWork
+             affiliation='Social welfare'
+            />
+            }
+            {(props.route.params.props.affiliation == 'ONGM') &&
+            <DetailFieldofWork
+             affiliation='Human rights'
+            />
+            }
             </View>
-        </View>
-        <View style={styles.CharityOverviewContainer}>
-                <Text style={styles.TagTitle}>Tags</Text>
         </View>
     </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
+  CharityNameContainer: {
+      marginHorizontal: 20,
+  },
     CharityName: {
       width: '100%',
       textAlign: 'center',
+      alignItems: 'center',
       fontSize: 20,
       backgroundColor: colors.primary,
-      color: colors.secondary,
+      color: 'black',
       paddingBottom: 15,
-      paddingVertical: 14,
+      paddingVertical: 18,
     },
     CharityOverview: {
         width: '100%',
@@ -101,8 +124,8 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: "row",
       justifyContent: 'center',
-      marginBottom: 65,
-      marginTop: 30,
+      marginBottom: 30,
+      marginTop: 26,
   },
     CharityDetailsContainer: {
         flex: 1,
@@ -121,7 +144,7 @@ const styles = StyleSheet.create({
       },
     CharityDetails: {
         width: '100%',
-        marginBottom: -15,
+        marginBottom: -5,
         alignItems: 'center',
         textAlign: 'center',
         fontSize: 18,

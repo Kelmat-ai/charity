@@ -60,7 +60,7 @@ return(
     <View   style={styles.CategoryCardContainer}>
       <CategoryCard CategoryImgLink={require('../assets/menuvectors/undraw_nature_m5ll.png')}
        charAffiliation = "ONGA" subtitleText="Environmental action"   />
-      <CategoryCard  CategoryImgLink={require('../assets/menuvectors/undraw_building_blocks_n0nc.png')}
+      <CategoryCard  CategoryImgLink={require('../assets/menuvectors/undraw_under_construction_46pa.png')}
       charAffiliation = "ONGD" subtitleText="Development aid"  />
       <CategoryCard CategoryImgLink={require('../assets/menuvectors/undraw_women_day_2m89.png')}
       charAffiliation = "ONGM" subtitleText="Human rights"  />
