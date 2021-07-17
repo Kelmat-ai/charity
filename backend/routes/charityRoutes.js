@@ -28,7 +28,6 @@ app.get('/charities/charId', async (req, res) => {
 
 app.get('/listing/:charAffiliation', async (req, res) => {
     const charAffiliation = req.params.charAffiliation
-    console.log(charAffiliation)
     try {
     const charitySelected = await charities.findAll({
     where: {
@@ -48,7 +47,6 @@ app.get('/search', async (req, res) => {
     [Op.or]: [ {affiliation: query}, {website: query}, {post_code: query}, {city: query}, {address: query}, {email: query}, {phone_number: query}, {area_of_impact: query} ]
         }
     })
-    console.log(charitySelected)
     res.json({ charitySelected })
     } catch(error) {
     console.error(error)

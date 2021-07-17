@@ -1,7 +1,6 @@
 <script src="http://192.168.1.69:19002"></script>
-import { StatusBar } from 'expo-status-bar';
 import colors from '../../../config/colors.js';
-import React, { useState } from "react";
+import React from "react";
 import Header from '../../../components/Header.js';
 import {
   StyleSheet,
@@ -10,7 +9,6 @@ import {
   View,
   Switch
 } from "react-native";
-import Constants from "expo-constants";
 import { GoBack } from '../../../components/Menu.js';
 import * as Analytics from 'expo-firebase-analytics';
 

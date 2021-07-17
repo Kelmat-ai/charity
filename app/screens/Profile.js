@@ -4,7 +4,6 @@ import React from 'react';
 import CharAvatar from '../components/Avatar';
 import CharDescrip from '../components/CharDescrip';
 import colors from '../config/colors';
-import { Favourite, GoBack, Menu } from '../components/Menu';
 import * as Analytics from 'expo-firebase-analytics';
 
 const Profile = (props) => {
@@ -19,15 +18,31 @@ const Profile = (props) => {
 
   return(
 <View style={styles.ImageBackgroundContainer}>
-    <View  style={styles.Header}>
-      <GoBack />
-      <Favourite />
-    </View>
   <View >
-  <ImageBackground style={styles.ImageBackground} source={ {uri: "https://reactjs.org/logo-og.png"} }></ImageBackground>
+  <ImageBackground style={styles.ImageBackground}></ImageBackground>
   </View>
-  <View>
-    <CharAvatar />
+  <View >
+          {(props.route.params.props.affiliation == 'ONGA') &&
+            <CharAvatar
+             circularImage={require('../assets/menuvectors/undraw_nature_m5ll.png')}
+            />
+            }
+            {(props.route.params.props.affiliation == 'ONGD') &&
+            <CharAvatar style={styles.circularImage}
+            circularImage={require('../assets/menuvectors/undraw_under_construction_46pa.png')}
+            />
+            }
+            {(props.route.params.props.affiliation == 'ONGPD') &&
+            <CharAvatar
+            circularImage={require('../assets/menuvectors/undraw_fatherhood_7i19.png')}
+            />
+            }
+            {(props.route.params.props.affiliation == 'ONGM') &&
+            <CharAvatar
+            circularImage={require('../assets/menuvectors/undraw_women_day_2m89.png')}
+            />
+            }
+    {/* <CharAvatar /> */}
   </View>
   <View style={styles.CharDescripContainer}>
   <CharDescrip {...props} />
@@ -37,27 +52,30 @@ const Profile = (props) => {
 }
 
 const styles = StyleSheet.create({
+  circularImage: {
+    resizeMode: "center",
+    width: '10%'
+  },
     container: {
       flex: 1,
       flexDirection: "column",
     },
     ImageBackgroundContainer: {
       flex: 1,
+      backgroundColor: colors.primary,
+      color: colors.fourth,
     },
     ImageBackground: {
-      height: 300,
+      height: 175,
       width: '100%',
+      backgroundColor: colors.fourth,
     },
     CharDescripContainer: {
       marginTop: 80,
       flex: 1,
       flexDirection: "row",
       justifyContent: 'center',
-    },
-    Header: {
-      zIndex: 1,
-      elevation: 1,
-    },
+    }
   });
 
 export default Profile;

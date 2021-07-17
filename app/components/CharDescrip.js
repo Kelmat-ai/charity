@@ -1,13 +1,9 @@
 <script src="http://192.168.1.69:19002"></script>
 import React from 'react';
-import { StyleSheet, Text, Image, ImageBackground, View, ScrollView, Linking } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import colors from '../config/colors';
 import { List } from 'react-native-paper';
-import { Ionicons } from "@expo/vector-icons";
 import {ButtonWebsite} from './Button';
-import { useEffect } from 'react';
-import PropTypes from "prop-types";
-import { useNavigation } from '@react-navigation/native';
 
 export const DetailLocation = (props) => (
   <List.Item
@@ -18,29 +14,10 @@ export const DetailLocation = (props) => (
   />
 );
 
-// export const DetailTax = () => (
-//   <List.Item
-//     style={styles.CharityDetails}
-//     title="Tax benefits"
-//     description="40%"
-//     left={props => <List.Icon {...props}   color= {colors.secondary} icon={"currency-eur"} />}
-//   />
-// );
-
-// export const DetailFoundation = () => (
-//   <List.Item
-//     style={styles.CharityDetails}
-//     title="Foundation year"
-//     description="2020"
-//     left={props => <List.Icon {...props}  color= {colors.secondary} icon={"calendar-range"}/>}
-//   />
-// );
-
 export const DetailFieldofWork = (props) => (
   <List.Item
     style={styles.CharityDetails}
     title={props.affiliation}
-    // description="Social"
     left={props => <List.Icon {...props}  color= {colors.secondary}  icon={"passport-biometric"}/>}
   />
 );

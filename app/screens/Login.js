@@ -1,10 +1,7 @@
 <script src="http://192.168.1.69:19002"></script>
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import colors from '../config/colors.js';
-import Header from '../components/Header';
-import Button from '../components/Button';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
@@ -14,10 +11,11 @@ import { Snackbar } from 'react-native-paper';
 export default function Login() {
   Analytics.setCurrentScreen('Login');
   const navigation = useNavigation();
-  const [email, setEmail] = useState();
   const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [snackText, setsnackText] = useState();
+  const [editable, setEditable] = useState(false);
 
   const [visible, setVisible] = React.useState(false);
 
@@ -29,29 +27,32 @@ export default function Login() {
     checkUserStatus();
   }, []);
 
+
+  useEffect(() => {
+    setEditable(true);
+}, []);
+
+
   const checkUserStatus = async () => {
     try {
       const credentials = await SecureStore.getItemAsync('userDetails');
       if (credentials) {
         navigation.navigate("Home");
       } else {
-        // setLoading(false);
+        console.log('credentials not found')
       }
     } catch (error) {
       console.log('Secure Storage error: ', error);
-      // setLoading(false);
     }
   }
 
   function signIn() {
-
+console.log(email)
     axios.post('http://192.168.1.69:3000/api/auth/signin', {
-      username: username,
+      email: email,
       password: password,
     }).then((response) => {
-      const credentials = { username, password }
-      console.log(response.status);
-      console.log(credentials)
+      const credentials = { email, password }
       if (response.status == '200') {
         SecureStore.setItemAsync('userDetails', JSON.stringify(credentials))
         navigation.navigate("Home");
@@ -66,11 +67,13 @@ export default function Login() {
   return (
     <ScrollView style={styles.biggestContainer}>
       <View style={styles.regform}>
-        <Text style={styles.inputTitle}>Username</Text>
+        <Text style={styles.inputTitle}>Email</Text>
         <TextInput
           placeholderTextColor={colors.secondary}
-          onChangeText={(text) => setUsername(text)}
-          placeholder="Jonathan Smitherino"
+          onChangeText={(text) => setEmail(text.toLowerCase())}
+          autoCorrect={false}
+          editable={editable}
+          placeholder="you@example.com"
           style={styles.textInput}
         />
         <Text style={styles.inputTitle}>Password</Text>

@@ -1,10 +1,7 @@
 <script src="http://192.168.1.69:19002"></script>
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView, Linking } from 'react-native';
 import {Button} from '../../../components/Button.js';
-import Header from '../../../components/Header.js';
-import { GoBack } from '../../../components/Menu.js';
 import colors from '../../../config/colors.js';
 import * as Analytics from 'expo-firebase-analytics';
 
@@ -14,11 +11,6 @@ export default function ContactUs(props) {
   return (
 
 <ScrollView>
-    <View>
-    <Header title="Contact us" />
-    <GoBack />
-    </View>
-
     <View>
 <TextInput
     placeholderTextColor={colors.secondary}

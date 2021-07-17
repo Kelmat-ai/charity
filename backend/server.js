@@ -34,8 +34,6 @@ db.sequelize.sync()
      // charities.sync() Now the `chars` table in the database corresponds to the model definition
     // Note: using `force: true` will drop the table if it already exists
 
-// app.get('/', (req, res) => res.json({message: "Hello World"}))
-
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
 require('./routes/charityRoutes')(app);

@@ -2,18 +2,12 @@
 import * as React from 'react';
 import { Searchbar } from 'react-native-paper';
 import colors from '../config/colors.js';
-import Constants from "expo-constants";
 import axios from 'axios';
 import CharityItem from '../components/CharityItem.js';
 import {
   StyleSheet,
-  Text,
   View,
-  Switch,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  SectionList
+  ScrollView
 } from "react-native";
 import { useEffect, useState } from 'react';
 import * as Analytics from 'expo-firebase-analytics';

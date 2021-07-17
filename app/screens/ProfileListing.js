@@ -3,20 +3,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Switch,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  SectionList
+  ScrollView
 } from "react-native";
-import Button from '../components/Button.js';
 import CharityItem from '../components/CharityItem.js';
-import Header from '../components/Header.js';
-import { Menu, GoBack } from '../components/Menu.js';
-import { useNavigation } from '@react-navigation/native';
-import colors from '../config/colors.js';
 import axios from 'axios';
 import { useState } from 'react';
 import * as Analytics from 'expo-firebase-analytics';
@@ -56,9 +46,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch',
     width: '100%',
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingVertical: 8,
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingVertical: 5,
   },
 });
 

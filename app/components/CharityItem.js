@@ -2,13 +2,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import colors from '../config/colors.js';
-import { Card, Title, Paragraph, Image } from 'react-native-paper';
-import Button from './Button.js';
-import { DetailLocation, DetailTax } from './CharDescrip.js';
-import { StyleSheet, Text, ImageBackground, View, ScrollView } from 'react-native';
+import { Card, Title } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
 import { List } from 'react-native-paper';
-import { Ionicons } from "@expo/vector-icons";
-import axios from 'axios';
 
 export const CardDetailLocation = (props) => (
 
@@ -115,7 +111,6 @@ const styles = StyleSheet.create({
     },
     Title: {
       fontSize: 18,
-      // textAlign: 'center',
   }
   });
 

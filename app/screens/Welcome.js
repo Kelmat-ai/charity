@@ -1,15 +1,32 @@
 <script src="http://192.168.1.69:19002"></script>
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Image, Alert, TouchableOpacity, Text, ScrollView } from 'react-native';
-import Button from '../components/Button.js';
+import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import colors from '../config/colors.js';
-import Constants from "expo-constants";
 import * as Analytics from 'expo-firebase-analytics';
 import { useNavigation } from '@react-navigation/native';
+import * as SecureStore from 'expo-secure-store';
 
 function Welcome( {props} ) {
 const navigation = useNavigation();
 Analytics.setCurrentScreen('Welcome');
+
+useEffect(() => {
+    checkUserStatus();
+  }, []);
+
+  const checkUserStatus = async () => {
+    try {
+      const credentials = await SecureStore.getItemAsync('userDetails');
+      if (credentials) {
+        navigation.navigate("Home");
+      } else {
+        console.log('credentials not found')
+      }
+    } catch (error) {
+      console.log('Secure Storage error: ', error);
+    }
+  }
+
 
     return (
 <View style={styles.container}>

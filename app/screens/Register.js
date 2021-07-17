@@ -1,6 +1,6 @@
 <script src="http://192.168.1.69:19002"></script>
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import {Button} from '../components/Button.js';
 import Header from '../components/Header.js';
@@ -8,6 +8,8 @@ import colors from '../config/colors.js';
 import axios from 'axios';
 import * as Analytics from 'expo-firebase-analytics';
 import { Snackbar } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import { Platform } from 'react-native';
 
 function Register(props) {
 Analytics.setCurrentScreen('Register');
@@ -16,14 +18,20 @@ const [email, setEmail] = useState()
 const [password, setPassword] = useState()
 const [visible, setVisible] = useState(false);
 const [snackText, setsnackText] = useState();
+const [editable, setEditable] = useState(false);
+const navigation = useNavigation();
 
 const onToggleSnackBar = () => setVisible(!visible);
 
 const onDismissSnackBar = () => setVisible(false);
 
+useEffect(() => {
+  setEditable(true);
+}, []);
+
 function createUser() {
 axios.post('http://192.168.1.69:3000/api/auth/signup', {
-  user_id: 12345,  
+  user_id: Math.floor(Math.random() * 1000000),  
   username: username,
   email: email,
   password: password,
@@ -32,6 +40,9 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
   updatedat: Date.now()
 }).then((response) => {
   console.log(response);
+  if (response.status == '200') {
+    navigation.navigate("Home");
+  }
 }, (error) => {
   console.log(error);
   setsnackText('An error has occurred. Please try again later');
@@ -53,13 +64,15 @@ function fieldValidation() {
 <TextInput
     placeholderTextColor={colors.secondary}
     onChangeText={(text) => setUsername( text )}
-    placeholder="Jonathan Smitherino"
+    placeholder="Your username here"
     style={styles.textInput}
     />
 <Text style={styles.inputTitle}>Email *</Text>
 <TextInput
     placeholderTextColor={colors.secondary}
-    onChangeText={(text) => setEmail( text )}
+    editable={editable}
+    onChangeText={(text) => setEmail( text.toLowerCase() )}
+    autoCorrect={false}
     placeholder="you@example.com"
     style={styles.textInput}
     />
@@ -75,7 +88,7 @@ function fieldValidation() {
 <View style = {styles.container}>
 <TouchableOpacity
     style = {styles.button}
-    onPress= {() =>{ fieldValidation()}}
+    onPress= {() =>{ fieldValidation();createUser()}}
     type="clear"> 
    <Text style = {styles.btnText}>Register now</Text>
 </TouchableOpacity >

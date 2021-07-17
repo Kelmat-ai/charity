@@ -1,21 +1,13 @@
 <script src="http://192.168.1.69:19002"></script>
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Card } from 'react-native-paper';
-import { Title } from 'react-native-paper';
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  Switch,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  SectionList
+  TouchableOpacity
 } from "react-native";
-import colors from '../config/colors.js';
-import axios from 'axios';
 import * as Analytics from 'expo-firebase-analytics';
 
 function CategoryCard(props) {

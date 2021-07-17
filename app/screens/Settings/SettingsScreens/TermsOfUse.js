@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet,SafeAreaView, ScrollView } from 'react-native';
  
 import Markdown from 'react-native-markdown-display';
  

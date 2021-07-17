@@ -15,16 +15,3 @@ pool.query('SELECT * FROM "chars";', (err, res) => {
   // console.log(err, res)
   pool.end()
 })
-
-
-// console.log(charities)
-// pool.query('SELECT * FROM "chars" WHERE id = 1;', (err, res) => {
-//   console.log(err, res)
-//   pool.end()
-// })
-
-// let query = 'SELECT * FROM "chars" WHERE affiliation =' + "'ONGA'";
-// pool.query(query, (err, res) => {
-//   console.log(err, res)
-//   pool.end()
-// })

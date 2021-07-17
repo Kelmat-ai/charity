@@ -1,9 +1,8 @@
 <script src="http://192.168.1.69:19002"></script>
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, View, TextInput} from "react-native";
+import { Text, StyleSheet, View} from "react-native";
 import colors from '../config/colors.js';
 import Constants from "expo-constants";
-import { Menu, SearchIcon } from "./Menu.js";
 
 const Header = ({ title }) => {
   return (

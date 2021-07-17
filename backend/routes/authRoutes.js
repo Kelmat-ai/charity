@@ -20,9 +20,6 @@ module.exports = function(app) {
 
   app.put(
     "/api/auth/changepassword",
-    // [
-    //   verifyRegistration.checkDuplicateUsernameOrEmail
-    // ],
     controller.changepassword
   );
 

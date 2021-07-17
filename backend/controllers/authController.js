@@ -14,11 +14,18 @@ exports.signup = (req, res) => {
     email: req.body.email,
     admin: req.body.admin,
     password: bcrypt.hashSync(req.body.password, 8)
-  }).catch(err => {
-      res.status(500).send({ message: err.message });
-    }).then(
-        res.send({ message: "User was registered successfully!" })
-      );
+  }).then(
+    res.send({ message: "User was registered successfully!" })
+  ).catch(err => {
+    console.log(err)
+        res.status(500).send({ message: err.message });
+      })
+
+  // catch(err => {
+  //     res.status(500).send({ message: err.message });
+  //   }).then(
+  //       res.send({ message: "User was registered successfully!" })
+  //     );
 };
 
 exports.changepassword = (req, res) => {
@@ -64,7 +71,8 @@ exports.changepassword = (req, res) => {
 exports.signin = (req, res) => {
   User.findOne({
     where: {
-      username: req.body.username
+      // username: req.body.username
+      email: req.body.email
     }
   })
     .then(user => {
