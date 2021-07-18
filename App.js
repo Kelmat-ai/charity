@@ -22,7 +22,8 @@ import Favourites from './app/screens/Favourites';
 import Search from './app/components/Search';
 import Register from './app/screens/Register';
 import Login from './app/screens/Login';
-import Logout from './app/screens/Logout';
+import {Logout} from './app/screens/Logout';
+import {removeCredentials} from './app/screens/Logout';
 import HomeScreen from './app/screens/Home';
 import colors from './app/config/colors.js';
 import ProfileListingScreen from './app/screens/ProfileListing';
@@ -133,12 +134,12 @@ function HomeStack() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Welcome" component={Welcome}
         options={{ headerShown: false }} />
-      <Stack.Screen name="Logout" component={Logout} />
+
     </Stack.Navigator>
   );
 }
 
-function CustomDrawerContent(props, { navigation }) {
+function CustomDrawerContent(props, {navigation} ) {
 
   const { state, ...rest } = props;
   const newState = { ...state }
@@ -147,7 +148,8 @@ function CustomDrawerContent(props, { navigation }) {
   newState.routes = newState.routes.filter(item =>
     item.name !== 'Create your account').filter(item =>
       item.name !== 'Login').filter(item =>
-        item.name !== 'Welcome') //routes to be excluded
+        item.name !== 'Welcome').filter(item =>
+          item.name !== 'Logout') //routes to be excluded
 
   return (
     <SafeAreaView style={styles.container}>
@@ -157,6 +159,15 @@ function CustomDrawerContent(props, { navigation }) {
       <DrawerContentScrollView {...props}>
         <DrawerItemList state={newState} {...rest}
         //  {...props} 
+        />
+        <DrawerItem    label='Logout' onPress={() => {removeCredentials(); rest.navigation.navigate('Login')}}
+                  icon={({ focused, size }) => (
+                    <Ionicons
+                      name="md-log-out"
+                      size={23}
+                      color={focused ? colors.primary : colors.tertiary}
+                    />)
+                }
         />
       </DrawerContentScrollView>
     </SafeAreaView>
@@ -200,16 +211,6 @@ function DrawerStack() {
           drawerIcon: ({ focused, size }) => (
             <Ionicons
               name="md-settings"
-              size={23}
-              color={focused ? colors.primary : colors.tertiary}
-            />),
-        }}
-      />
-      <Drawer.Screen name="Logout" component={Logout}
-        options={{
-          drawerIcon: ({ focused, size }) => (
-            <Ionicons
-              name="md-log-out"
               size={23}
               color={focused ? colors.primary : colors.tertiary}
             />),
