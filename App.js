@@ -5,7 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, drawerContent } from '@react-navigation/drawer';
 import {
   DrawerContentScrollView,
-  DrawerItemList
+  DrawerItemList,
+  DrawerItem
 } from '@react-navigation/drawer';
 import React from 'react';
 import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
@@ -25,7 +26,7 @@ import Logout from './app/screens/Logout';
 import HomeScreen from './app/screens/Home';
 import colors from './app/config/colors.js';
 import ProfileListingScreen from './app/screens/ProfileListing';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import Store from './app/redux/store';
 import * as SecureStore from 'expo-secure-store';
 import * as Analytics from 'expo-firebase-analytics';
@@ -38,183 +39,218 @@ import { List } from 'react-native-paper';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-function HomeStack () {
+function GoBack() {
+  const navigation = useNavigation();
+  return (
+    <HeaderBackButton
+      onPress={() => {
+        navigation.goBack();
+      }}
+    />
+  )
+}
+
+function HomeStack() {
   const navigation = useNavigation();
 
+
   return (
-    <Stack.Navigator  initialRouteName="Home">
-      <Stack.Screen name = "Home" component={HomeScreen}
-                          options={{
-                            headerBackImage: () => <Ionicons name={"md-menu"} color={colors.secondary} size={30} onPress={() => navigation.toggleDrawer()}/>,
-                            headerLeft: (props) => (
-                              <HeaderBackButton
-                                {...props}
-                              />
-                            ),
-                          }}
+    <Stack.Navigator initialRouteName="Home" headerMode="screen">
+      <Stack.Screen name="Home" component={HomeScreen}
+        options={{
+          headerBackImage: () => <Ionicons name={"md-menu"} color={colors.secondary} size={30} onPress={() => navigation.toggleDrawer()} />,
+          headerLeft: (props) => (
+            <HeaderBackButton
+              {...props}
+            />
+          ),
+        }}
       />
-      <Stack.Screen name = "Favourites" component={Favourites}/>
-      <Stack.Screen name = "Settings" component={SettingsScreen}
-                          options={{
-                            headerBackImage: () => 
-                            <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()}/>,
-                            headerLeft: (props) => (
-                              <HeaderBackButton
-                                {...props}
-                              />
-                            ),
-                          }}
+      <Stack.Screen name="Settings" component={SettingsScreen}
+        options={{
+          headerBackImage: () =>
+            <Ionicons name={"md-menu"} size={30} onPress={() => navigation.toggleDrawer()} />,
+          headerLeft: (props) => (
+            <HeaderBackButton
+              {...props}
+            />
+          ),
+        }}
       />
       <Stack.Screen name="Search" component={Search}
-                          options={{
-                            headerBackImage: () => 
-                            <Ionicons name={"md-menu"}
-                            size={30} onPress={() => navigation.toggleDrawer()}/>,
-                            headerLeft: (props) => (
-                              <HeaderBackButton
-                                {...props}
-                              />
-                            ),
-                            headerTintColor: colors.secondary,
-                          }}
+        options={{
+          headerBackImage: () =>
+            <Ionicons name={"md-menu"}
+              size={30} onPress={() => navigation.toggleDrawer()} />,
+          headerLeft: (props) => (
+            <HeaderBackButton
+              {...props}
+            />
+          )
+        }}
 
       />
       <Stack.Screen name="Charity Profile" component={Profile} />
       <Stack.Screen name="Results" component={ProfileListingScreen} />
       <Stack.Screen name="Contact Us" component={ContactUs} />
-      <Stack.Screen name="Change Your Password" component={EditDetails} 
-                    options={{
-                      headerLeft: (props) => (
-                        <HeaderBackButton
-                          {...props}
-                          onPress={() => {
-                            navigation.goBack();
-                          }}
-                        />
-                      ),
-                    }}
+      <Stack.Screen name="Change Your Password" component={EditDetails}
+        options={{
+          headerLeft: (props) => (
+            <HeaderBackButton
+              {...props}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+        }}
       />
-      <Stack.Screen name="Terms Of Use" component={TermsOfUse} 
-                          options={{
-                            headerLeft: (props) => (
-                              <HeaderBackButton
-                                {...props}
-                                onPress={() => {
-                                  navigation.goBack();
-                                }}
-                              />
-                            ),
-                          }}
+      <Stack.Screen name="Terms Of Use" component={TermsOfUse}
+        options={{
+          headerLeft: (props) => (
+            <HeaderBackButton
+              {...props}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+        }}
       />
       <Stack.Screen name="Privacy Policy" component={PrivacyPolicy}
-                          options={{
-                            headerLeft: (props) => (
-                              <HeaderBackButton
-                                {...props}
-                                onPress={() => {
-                                  navigation.goBack();
-                                }}
-                              />
-                            ),
-                          }}
+        options={{
+          headerLeft: (props) => (
+            <HeaderBackButton
+              {...props}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+        }}
       />
       <Stack.Screen name="Create your account" component={Register} />
-      <Stack.Screen name="Login" component={Login}/>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Welcome" component={Welcome}
+        options={{ headerShown: false }} />
       <Stack.Screen name="Logout" component={Logout} />
-      <Stack.Screen name="Notifications" component={Notifications}/>
     </Stack.Navigator>
-    );
-    }
-  
-    function CustomDrawerContent(props, {navigation}) {
-      return (
-        <SafeAreaView  style={styles.container}>
-          <View   style={styles.logoContainer}>
-        <Image style={styles.drawerLogo} source={require('./app/assets/Logo_red2.png')}/>
-        </View>
-        <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
-      </DrawerContentScrollView>
-        </SafeAreaView>
-      )
-    }
+  );
+}
 
-  function DrawerStack (){
-    return(
-    <Drawer.Navigator  initialRouteName="Home" drawerStyle={styles.drawerNavigator}
-    drawerContentOptions={{
-      activeTintColor: colors.primary,
-      activeBackgroundColor: colors.fourth
-    }}
-    drawerContent={(props) => <CustomDrawerContent {...props}/>}
+function CustomDrawerContent(props, { navigation }) {
+
+  const { state, ...rest } = props;
+  const newState = { ...state }
+  //copy from state before applying any filter. do not change original state
+
+  newState.routes = newState.routes.filter(item =>
+    item.name !== 'Create your account').filter(item =>
+      item.name !== 'Login').filter(item =>
+        item.name !== 'Welcome') //routes to be excluded
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.drawerLogo} source={require('./app/assets/Logo_red2.png')} />
+      </View>
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList state={newState} {...rest}
+        //  {...props} 
+        />
+      </DrawerContentScrollView>
+    </SafeAreaView>
+  )
+}
+
+function DrawerStack() {
+
+  return (
+    <Drawer.Navigator initialRouteName="Welcome" drawerStyle={styles.drawerNavigator}
+      drawerContentOptions={{
+        activeTintColor: colors.primary,
+        activeBackgroundColor: colors.fourth
+      }}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <Drawer.Screen name="Home" component={HomeStack} 
-           options={{drawerIcon: ({focused, size}) => (
-              <Ionicons
-                 name="md-home"
-                 size={23}
-                 color={focused ? colors.primary : colors.tertiary}
-              />)
-            }}
-            />
-      <Stack.Screen name="Search" component={Search}
-     options={{headerShown: true,
-      drawerIcon: ({focused, size}) => (
-        <Ionicons
-           name="md-search"
-           size={23}
-           color={focused ? colors.primary : colors.tertiary}
-        />),
-      }}
+      <Drawer.Screen name="Home" component={HomeStack}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <Ionicons
+              name="md-home"
+              size={23}
+              color={focused ? colors.primary : colors.tertiary}
+            />)
+        }}
       />
-      <Drawer.Screen name="Settings" component={SettingsScreen} 
-     options={{headerShown: true,
-      drawerIcon: ({focused, size}) => (
-        <Ionicons
-           name="md-settings"
-           size={23}
-           color={focused ? colors.primary : colors.tertiary}
-        />),
-      }}
+      <Drawer.Screen name="Search" component={Search}
+        options={{
+          headerShown: true,
+          drawerIcon: ({ focused, size }) => (
+            <Ionicons
+              name="md-search"
+              size={23}
+              color={focused ? colors.primary : colors.tertiary}
+            />),
+        }}
       />
-      <Stack.Screen name="Logout" component={Logout} 
-            options={{drawerIcon: ({focused, size}) => (
-                <Ionicons
-                   name="md-log-out"
-                   size={23}
-                   color={focused ? colors.primary : colors.tertiary}
-                />),
-              }}
+      <Drawer.Screen name="Settings" component={SettingsScreen}
+        options={{
+          headerShown: true,
+          drawerIcon: ({ focused, size }) => (
+            <Ionicons
+              name="md-settings"
+              size={23}
+              color={focused ? colors.primary : colors.tertiary}
+            />),
+        }}
       />
-      <Stack.Screen name="Create your account" component={Register} 
-      options={{headerShown: true}}
-      options={{
-        swipeEnabled: false,
-      }}
+      <Drawer.Screen name="Logout" component={Logout}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <Ionicons
+              name="md-log-out"
+              size={23}
+              color={focused ? colors.primary : colors.tertiary}
+            />),
+        }}
       />
-      <Stack.Screen name="Login" component={Login}
-      options={{headerShown: true}}
-      options={{
+      <Drawer.Screen name="Create your account" component={Register}
+        options={{
+          swipeEnabled: false,
+          headerShown: true,
+          headerLeft: (props) => (
+            <GoBack />
+          ),
+        }}
+      />
+      <Drawer.Screen name="Login" component={Login}
+        options={{
+          swipeEnabled: false,
+          headerShown: true,
+          headerLeft: (props) => (
+            <GoBack />
+          ),
+        }}
+      />
+      <Drawer.Screen name="Welcome" component={Welcome}
+        options={{
           swipeEnabled: false,
         }}
       />
-      <Stack.Screen name="Welcome" component={Welcome}
-            options={{
-              swipeEnabled: false,
-            }} />
     </Drawer.Navigator>
-    );
-  }
+  );
+}
 
- export default function App() {
+export default function App() {
   const credentials = SecureStore.getItemAsync('userDetails');
   Analytics.setCurrentScreen('Home menu');
 
-    return (
-      <Provider store={Store}>
-      <NavigationContainer> 
-      <DrawerStack />
-    </NavigationContainer>
+  return (
+    <Provider store={Store}>
+      <NavigationContainer>
+        <DrawerStack />
+      </NavigationContainer>
     </Provider>
   );
 }
@@ -236,9 +272,12 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: "center",
-},
+  },
   icons: {
     color: colors.secondary,
     backgroundColor: colors.secondary
-}
+  },
+  hiddenDrawers: {
+    width: "0%",
+  }
 });

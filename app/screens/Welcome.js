@@ -1,5 +1,5 @@
 <script src="http://192.168.1.69:19002"></script>
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import colors from '../config/colors.js';
 import * as Analytics from 'expo-firebase-analytics';

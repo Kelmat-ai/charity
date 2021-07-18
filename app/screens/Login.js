@@ -47,7 +47,7 @@ export default function Login() {
   }
 
   function signIn() {
-console.log(email)
+
     axios.post('http://192.168.1.69:3000/api/auth/signin', {
       email: email,
       password: password,

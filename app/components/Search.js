@@ -91,9 +91,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       alignSelf: 'stretch',
       width: '100%',
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingVertical: 8,
+      paddingLeft: 5,
+      paddingRight: 5,
+      paddingVertical: 5,
     }
   });
 
