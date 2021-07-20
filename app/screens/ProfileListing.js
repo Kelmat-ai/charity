@@ -37,7 +37,7 @@ function ProfileListingScreen(props) {
           </View>
           )
         })}
-    </ScrollView>
+    </ScrollView> 
   );
 }
 

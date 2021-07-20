@@ -49,7 +49,7 @@ axios.post(`${baseUrl}:${basePort}/api/auth/signup`, {
     function goHome() {
     navigation.navigate("Home")
   }
-    setTimeout(goHome, 1500)
+  setTimeout(goHome, 1500)
 }
 }, (error) => {
   console.log(error);

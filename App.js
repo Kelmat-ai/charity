@@ -77,6 +77,7 @@ function HomeStack() {
             />
           ),
         }}
+        
       />
       <Stack.Screen name="Search" component={Search}
         options={{

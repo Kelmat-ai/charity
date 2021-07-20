@@ -127,7 +127,7 @@ const onDismissSnackBar = () => setVisible(false);
         >
           {snackText}
             </Snackbar>
-    </View>
+  </View>
 
 </ScrollView>
   );

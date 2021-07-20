@@ -39,6 +39,7 @@ const Search = () => {
         });
     }
 
+    
   const onChangeSearch = query => {
     const baseUrl = Constants.manifest.extra.BASEURL
     const basePort = Constants.manifest.extra.BASEPORT

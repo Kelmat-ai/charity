@@ -63,7 +63,7 @@ export default function Login() {
       console.log(error);
       setsnackText('Unknown login information');
       onToggleSnackBar();
-    })
+      })
   }
 
   return (

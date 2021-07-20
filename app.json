@@ -4,7 +4,7 @@
     "slug": "my-char-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/icon.png", 
     "extra": {
       "BASEURL": "http://192.168.1.69",
       "BASEPORT": "3000"
