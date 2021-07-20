@@ -10,13 +10,16 @@ import CharityItem from '../components/CharityItem.js';
 import axios from 'axios';
 import { useState } from 'react';
 import * as Analytics from 'expo-firebase-analytics';
+import Constants from 'expo-constants';
 
 function ProfileListingScreen(props) {
+  const baseUrl = Constants.manifest.extra.BASEURL
+  const basePort = Constants.manifest.extra.BASEPORT
   Analytics.setCurrentScreen('Profile Listing');
   let [charities, setCharities] = useState([]);
   useEffect(() => {
     const { charAffiliation } = props.route.params;
-    const url = `http://192.168.1.69:3000/listing/${charAffiliation}`
+    const url = `${baseUrl}:${basePort}/listing/${charAffiliation}`
     axios.get(url)
       .then((response) => {
         setCharities(response.data.charitySelected)

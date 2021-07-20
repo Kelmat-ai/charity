@@ -45,7 +45,7 @@ function GoBack() {
   return (
     <HeaderBackButton
       onPress={() => {
-        navigation.goBack();
+        navigation.navigate('Welcome');
       }}
     />
   )

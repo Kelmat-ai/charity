@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from 'react';
 import * as Analytics from 'expo-firebase-analytics';
 import _ from 'lodash';
+import Constants from 'expo-constants';
 
 const Search = () => {
   Analytics.setCurrentScreen('Search');
@@ -23,11 +24,13 @@ const Search = () => {
   }, []);
 
   const initialSearch = async() => {
+    const baseUrl = Constants.manifest.extra.BASEURL
+    const basePort = Constants.manifest.extra.BASEPORT
     min=Math.floor(1)
     max=Math.ceil(645)
     const charId = Array(max - min + 1).fill().map((_, idx) => min + idx)
     const randomCharId = _.sampleSize(charId, 50);
-      const url = `http://192.168.1.69:3000/charities/charId`
+      const url = `${baseUrl}:${basePort}/charities/charId`
       axios.get(url, {params: {charId: randomCharId }})
         .then((response) => {
           setCharities(response.data.charitySelected)
@@ -37,11 +40,13 @@ const Search = () => {
     }
 
   const onChangeSearch = query => {
+    const baseUrl = Constants.manifest.extra.BASEURL
+    const basePort = Constants.manifest.extra.BASEPORT
     setSearchQuery(query);
     Analytics.logEvent('SearchQuery', {
       query: query
     })
-    const url = 'http://192.168.1.69:3000/search'
+    const url = `${baseUrl}:${basePort}/search`
     axios.get(url, {params: {search_query: query} })
       .then((response) => {
         setCharities(response.data.charitySelected)

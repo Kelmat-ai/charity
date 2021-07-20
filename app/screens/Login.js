@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
 import * as Analytics from 'expo-firebase-analytics';
 import { Snackbar } from 'react-native-paper';
+import Constants from 'expo-constants';
 
 export default function Login() {
   Analytics.setCurrentScreen('Login');
@@ -47,8 +48,9 @@ export default function Login() {
   }
 
   function signIn() {
-
-    axios.post('http://192.168.1.69:3000/api/auth/signin', {
+    const baseUrl = Constants.manifest.extra.BASEURL
+    const basePort = Constants.manifest.extra.BASEPORT
+    axios.post(`${baseUrl}:${basePort}/api/auth/signin`, {
       email: email,
       password: password,
     }).then((response) => {
@@ -97,7 +99,7 @@ export default function Login() {
       </View>
 
 
-      <View style={styles.container}>
+      <View style={styles.containerSnack}>
       <Snackbar
         visible={visible}
         duration = {2500}
@@ -133,6 +135,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     color: colors.secondary
   },
+  containerSnack: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: "row",
+    marginTop: 100,
+},
   button: {
     alignSelf: 'stretch',
     alignItems: 'center',

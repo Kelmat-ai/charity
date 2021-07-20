@@ -11,12 +11,14 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { Snackbar } from 'react-native-paper';
+import Constants from 'expo-constants';
 
 
 export default function EditDetails() {
   Analytics.setCurrentScreen('EditDetails');
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmNewPassword, setConfirmNewPassword] = useState();
   const [visible, setVisible] = React.useState(false);
@@ -34,6 +36,7 @@ const onDismissSnackBar = () => setVisible(false);
     try {
       const credentials = await SecureStore.getItemAsync('userDetails');
       if (credentials) {
+        console.log('Credentials found')
         ParsedCredentials = JSON.parse(credentials)
       } else {
         console.log('No credentials found')
@@ -45,19 +48,24 @@ const onDismissSnackBar = () => setVisible(false);
 
 
   const changePassword = async () => {
+    const baseUrl = Constants.manifest.extra.BASEURL
+    const basePort = Constants.manifest.extra.BASEPORT
     const credentials = await SecureStore.getItemAsync('userDetails');
     ParsedCredentials = JSON.parse(credentials);
     console.log(ParsedCredentials);
 
     if ((newPassword != undefined && confirmNewPassword != undefined) && (newPassword == confirmNewPassword)) {
-    axios.put('http://192.168.1.69:3000/api/auth/changepassword',
+    axios.put(`${baseUrl}:${basePort}/api/auth/changepassword`,
      { 
-      username: ParsedCredentials.username,
+      email: ParsedCredentials.email,
       password: ParsedCredentials.password,
       newPassword: newPassword
     }
     ).then((response) => {
       console.log(response);
+      if (response.status=='200') {
+        setsnackText('Password changed successfully');
+        onToggleSnackBar()}
     }, (error) => {
       console.log(error.response);
       if (error.response.status=='401') {
@@ -105,7 +113,7 @@ const onDismissSnackBar = () => setVisible(false);
 </TouchableOpacity >
 </View>
 
-<View style={styles.container}>
+<View style={styles.containerSnack}>
       <Snackbar
         visible={visible}
         duration = {2500}
@@ -139,6 +147,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: "row",
   },
+  containerSnack: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: "row",
+    marginTop: 100,
+},
     button: {
     alignSelf: 'stretch',
     alignItems: 'center',

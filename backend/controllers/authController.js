@@ -29,10 +29,11 @@ exports.signup = (req, res) => {
 };
 
 exports.changepassword = (req, res) => {
-
+  console.log(req.body.email)
   User.findOne({
     where: {
-      username: req.body.username
+      // username: req.body.username
+      email: req.body.email
     }
   })
     .then(user => {

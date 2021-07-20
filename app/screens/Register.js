@@ -10,6 +10,7 @@ import * as Analytics from 'expo-firebase-analytics';
 import { Snackbar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { Platform } from 'react-native';
+import Constants from 'expo-constants';
 
 function Register(props) {
 Analytics.setCurrentScreen('Register');
@@ -30,7 +31,9 @@ useEffect(() => {
 }, []);
 
 function createUser() {
-axios.post('http://192.168.1.69:3000/api/auth/signup', {
+const baseUrl = Constants.manifest.extra.BASEURL
+const basePort = Constants.manifest.extra.BASEPORT
+axios.post(`${baseUrl}:${basePort}/api/auth/signup`, {
   user_id: Math.floor(Math.random() * 1000000),  
   username: username,
   email: email,
@@ -41,8 +44,13 @@ axios.post('http://192.168.1.69:3000/api/auth/signup', {
 }).then((response) => {
   console.log(response);
   if (response.status == '200') {
-    navigation.navigate("Home");
+    setsnackText('Welcome to BetterGiving!');
+    onToggleSnackBar()
+    function goHome() {
+    navigation.navigate("Home")
   }
+    setTimeout(goHome, 1500)
+}
 }, (error) => {
   console.log(error);
   setsnackText('An error has occurred. Please try again later');
@@ -64,6 +72,8 @@ function fieldValidation() {
 <TextInput
     placeholderTextColor={colors.secondary}
     onChangeText={(text) => setUsername( text )}
+    editable={editable}
+    autoCorrect={false}
     placeholder="Your username here"
     style={styles.textInput}
     />
@@ -94,7 +104,7 @@ function fieldValidation() {
 </TouchableOpacity >
 </View>
 
-<View style={styles.container}>
+<View style={styles.containerSnack}>
       <Snackbar
         visible={visible}
         duration = {2500}
@@ -127,6 +137,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     flexDirection: "row",
+},
+  containerSnack: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: "row",
+    marginTop: 100,
 },
   button: {
     alignSelf: 'stretch',
