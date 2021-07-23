@@ -30,7 +30,8 @@ const Search = () => {
     max=Math.ceil(645)
     const charId = Array(max - min + 1).fill().map((_, idx) => min + idx)
     const randomCharId = _.sampleSize(charId, 50);
-      const url = `${baseUrl}:${basePort}/charities/charId`
+      // for development: const url = `${baseUrl}:${basePort}/charities/charId`
+      const url = `${baseUrl}/charities/charId`
       axios.get(url, {params: {charId: randomCharId }})
         .then((response) => {
           setCharities(response.data.charitySelected)
@@ -47,7 +48,8 @@ const Search = () => {
     Analytics.logEvent('SearchQuery', {
       query: query
     })
-    const url = `${baseUrl}:${basePort}/search`
+    // for development: const url = `${baseUrl}:${basePort}/search`
+    const url = `${baseUrl}/search`
     axios.get(url, {params: {search_query: query} })
       .then((response) => {
         setCharities(response.data.charitySelected)

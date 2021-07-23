@@ -33,7 +33,8 @@ useEffect(() => {
 function createUser() {
 const baseUrl = Constants.manifest.extra.BASEURL
 const basePort = Constants.manifest.extra.BASEPORT
-axios.post(`${baseUrl}:${basePort}/api/auth/signup`, {
+// for development: axios.post(`${baseUrl}:${basePort}/api/auth/signup`, {
+axios.post(`${baseUrl}/api/auth/signup`, {
   user_id: Math.floor(Math.random() * 1000000),  
   username: username,
   email: email,

@@ -19,7 +19,8 @@ function ProfileListingScreen(props) {
   let [charities, setCharities] = useState([]);
   useEffect(() => {
     const { charAffiliation } = props.route.params;
-    const url = `${baseUrl}:${basePort}/listing/${charAffiliation}`
+    // for development: const url = `${baseUrl}:${basePort}/listing/${charAffiliation}`
+    const url = `${baseUrl}/listing/${charAffiliation}`
     axios.get(url)
       .then((response) => {
         setCharities(response.data.charitySelected)

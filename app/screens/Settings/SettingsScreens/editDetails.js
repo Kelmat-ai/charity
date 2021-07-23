@@ -55,7 +55,8 @@ const onDismissSnackBar = () => setVisible(false);
     console.log(ParsedCredentials);
 
     if ((newPassword != undefined && confirmNewPassword != undefined) && (newPassword == confirmNewPassword)) {
-    axios.put(`${baseUrl}:${basePort}/api/auth/changepassword`,
+    // for development: axios.put(`${baseUrl}:${basePort}/api/auth/changepassword`,
+      axios.put(`${baseUrl}/api/auth/changepassword`,
      { 
       email: ParsedCredentials.email,
       password: ParsedCredentials.password,

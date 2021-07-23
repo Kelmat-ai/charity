@@ -50,7 +50,8 @@ export default function Login() {
   function signIn() {
     const baseUrl = Constants.manifest.extra.BASEURL
     const basePort = Constants.manifest.extra.BASEPORT
-    axios.post(`${baseUrl}:${basePort}/api/auth/signin`, {
+    // for development: axios.post(`${baseUrl}:${basePort}/api/auth/signin`, {
+    axios.post(`${baseUrl}/api/auth/signin`, {
       email: email,
       password: password,
     }).then((response) => {
@@ -60,7 +61,7 @@ export default function Login() {
         navigation.navigate("Home");
       }
     }, (error) => {
-      console.log(error);
+      console.log(error.response);
       setsnackText('Unknown login information');
       onToggleSnackBar();
       })

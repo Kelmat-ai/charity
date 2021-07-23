@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./app/assets/icon.png", 
     "extra": {
-      "BASEURL": "http://192.168.1.69",
+      "BASEURL": "https://kelmatventures.pt",
       "BASEPORT": "3000"
     },
     "splash": {
